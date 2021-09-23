@@ -1,13 +1,10 @@
-const path = require('path')
-// Allow webpack to add the script and link to stylesheet in the head of our HTML (in dev mode)
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 // This plugin extracts CSS into separate files. It creates a CSS file per JS file which contains CSS. It supports On-Demand-Loading of CSS and SourceMaps.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: {
-    index: './src/index.tsx',
-    vendor: ['react', 'react-dom']
+    index: './src/index.tsx'
+    // vendor: ['react', 'react-dom']
   },
   output: {
     path: __dirname + '/dist',
@@ -53,11 +50,6 @@ module.exports = {
     extensions: ['*', '.js', '.ts', '.tsx']
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public', 'index.html'),
-      fileName: './index.html',
-      inject: true
-    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
