@@ -16,5 +16,6 @@
     "noEmit": false,
     "jsx": "react"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/thirdPartyLoader.js"]
 }
