@@ -3,8 +3,8 @@ import React, { FC } from 'react'
 import closeIcon from '../_images/close-icon.svg'
 
 const CloseButton: FC<IProps> = ({ onClick }): JSX.Element => (
-  <button className="relative w-10 h-10 bg-gray-200 border-none" onClick={onClick}>
-    <img className="mx-auto" src={closeIcon}></img>
+  <button className="border-none" onClick={onClick}>
+    <img src={closeIcon} alt="close-cross"></img>
   </button>
 )
 

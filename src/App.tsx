@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import AlternativeDiscovery from './pages/AlternativeDiscovery'
 
+const testProductId = '0d2c0df1-f87b-4a21-bcfa-c6b3103b0728' //For development only
+
 const App = (): JSX.Element | null => {
   // States
   const [productId, setProductId] = useState<string | null>(null)

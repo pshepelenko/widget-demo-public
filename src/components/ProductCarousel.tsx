@@ -24,11 +24,11 @@ const ProductCarousel: FC<IProps> = ({ alternatives, selectProduct }): JSX.Eleme
   }
   return (
     <div className="relative h-40">
-      <div className="absolute z-10 ml-4 -translate-y-1/2 top-1/2">
+      <div className="absolute z-10 ml-4 -translate-y-1/2 top-14">
         <ProductCarouselArrow direction="left" handleClick={handlePrevProduct}></ProductCarouselArrow>
       </div>
 
-      <div className="absolute right-0 z-10 mr-4 -translate-y-1/2 top-1/2">
+      <div className="absolute right-0 z-10 mr-4 -translate-y-1/2 top-14">
         <ProductCarouselArrow direction="right" handleClick={handleNextProduct}></ProductCarouselArrow>
       </div>
       <div

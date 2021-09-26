@@ -11,15 +11,19 @@ import LoadingWheel from '../components/LoadingWheel'
 // Hooks
 import useApi from '../hooks/useApi'
 
-const initialTags = ['On sale', 'More exciting style', 'With light colours', 'Free shipping']
+//Images
+import logo from '../_images/logo.svg'
+
+const initialTags = ['On-sale', 'More exciting style', 'Light colours']
 
 const alternativeEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
 
 const AlternativeDiscovery = (props: IProps): JSX.Element => {
   // Props
-  const { productId, closeModule } = props
+  const { closeModule } = props
 
   // States
+  const [productId, setProductId] = useState(props.productId)
   const [productSelected, setProductSelected] = useState<IProduct | null>(null)
   const [tags, setTags] = useState<string[]>(initialTags)
   const [tagsSelected, setTagSelected] = useState<string[]>([])
@@ -58,8 +62,7 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
   }
 
   const selectProduct = (id: string) => {
-    const productSelected = data.alternatives.find((product: IProduct) => product.id === id)
-    setProductSelected(productSelected)
+    setProductId(id)
   }
 
   console.log('Rendering Module', productId, data?.alternatives)
@@ -67,37 +70,35 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
   return (
     <section id="splashup-discovery-module">
       <div className="fixed top-0 left-0 flex w-full h-full">
-        <div
-          className="w-80 bg-gray"
-          style={{
-            backgroundImage: `${productSelected ? `url(${productSelected.image_url})` : 'none'}`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          <div
-            className="flex flex-col w-full h-full p-4 transition-all bg-black bg-opacity-40"
-            // {showModule ? 'transform-gpu	 translate-x-0' : 'transform-gpu	translate-x--100%'}
-          >
-            <div className="flex-grow">
+        <div className="flex flex-col px-2 bg-purple-lightest" style={{ width: '330px' }}>
+          <div>
+            {/* Logo and close button */}
+            <div className="flex items-center justify-between">
+              <img src={logo} alt="discovery-logo" />
+              <CloseButton onClick={closeModule}></CloseButton>
+            </div>
+
+            <div className="flex flex-wrap my-2 ">
               {tags.map(tag => (
                 <Button
                   key={tag}
-                  style={{ marginRight: '0.5rem', marginBottom: '1rem' }}
                   inverted={!tagsSelected.includes(tag)}
                   onClick={() => toggleTag(tag)}
+                  style={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
                 >
                   {tag}
                 </Button>
               ))}
-
+            </div>
+            <div className="my-2">
               <form onSubmit={handleSearchSubmit}>
                 <SearchField name="search" value={search} onChange={handleSearchChange}></SearchField>
               </form>
             </div>
 
-            {productSelected && <ProductDescription product={productSelected}></ProductDescription>}
+            <p className="my-2 text-sm">
+              Tailored Alternatives <small>powered by splashup.co</small>
+            </p>
 
             {error && <p className="text-white">{error}</p>}
 
@@ -107,10 +108,11 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
               <ProductCarousel alternatives={data.alternatives} selectProduct={selectProduct} />
             )}
           </div>
+          <div className="flex-grow">
+            {productSelected && <ProductDescription product={productSelected}></ProductDescription>}
+          </div>
         </div>
-        <div className="flex-grow bg-black bg-opacity-90 " onClick={closeModule}>
-          <CloseButton onClick={closeModule}></CloseButton>
-        </div>
+        <div className="flex-grow bg-black bg-opacity-90 " onClick={closeModule}></div>
       </div>
     </section>
   )

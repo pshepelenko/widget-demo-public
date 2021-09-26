@@ -13,7 +13,8 @@ module.exports = {
       colors: {
         blue: '#2D14F4', // primary
         purple: {
-          DEFAULT: '#7048E8' // secondary
+          DEFAULT: '#7048E8', // secondary
+          lightest: '#F6F4FF'
         },
         pink: {
           DEFAULT: '#F784AD'

@@ -1,12 +1,14 @@
 import React, { FC, HTMLAttributes } from 'react'
 
-const Button: FC<IProps> = ({ children, inverted = false, ...rest }): JSX.Element => (
+const Button: FC<IProps> = ({ children, size, inverted = false, ...rest }): JSX.Element => (
   <button
-    className={`px-4 py-2 text-sm font-medium border rounded-md shadow-sm focus:none ${
+    className={`p-2 text-xs font-medium border rounded shadow-sm focus:none ${
       inverted
-        ? 'text-purple bg-white border-purple-700  hover:border-opacity-100 border-opacity-20'
+        ? 'text-purple-700  border-purple-700  hover:border-opacity-100'
         : 'text-white bg-purple-700 border-transparent hover:bg-purple-700 '
-    }`}
+    }
+    ${size === 'big' ? 'text-sm px-8' : ''}
+    `}
     {...rest}
   >
     {children}
@@ -15,6 +17,7 @@ const Button: FC<IProps> = ({ children, inverted = false, ...rest }): JSX.Elemen
 
 interface IProps extends HTMLAttributes<HTMLButtonElement> {
   inverted?: boolean
+  size?: 'big'
 }
 
 export default Button

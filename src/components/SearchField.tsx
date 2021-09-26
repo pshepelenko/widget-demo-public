@@ -8,7 +8,7 @@ const SearchField: FC<IProps> = ({ name, value, onChange }): JSX.Element => (
       autoFocus
       type="text"
       placeholder={`Try "better style..."`}
-      className="w-full px-3 py-2 text-sm rounded-full focus:outline-none focus:ring focus:border-purple-300 "
+      className="w-full px-3 py-2 text-sm border-2 rounded-full focus:outline-none focus:ring focus:border-purple-300 "
       name={name}
       value={value}
       onChange={onChange}
