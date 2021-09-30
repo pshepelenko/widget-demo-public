@@ -14,7 +14,7 @@ const SearchField: FC<IProps> = ({ name, value, maxLength, onChange }): JSX.Elem
       maxLength={maxLength}
       onChange={onChange}
     ></input>
-    <button className="absolute -translate-y-1/2 top-1/2 right-4 z-2">
+    <button type="submit" className="absolute -translate-y-1/2 top-1/2 right-4 z-2">
       <img src={magnifier} />
     </button>
   </div>

@@ -51,8 +51,10 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
     setSearch(e.target.value)
   }
 
-  const handleSearchSubmit = () => {
-    if (!search) return
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (!search || tags.includes(search)) return
 
     const newTag = search
 
