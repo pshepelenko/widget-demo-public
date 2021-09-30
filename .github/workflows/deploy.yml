@@ -22,7 +22,7 @@ jobs:
           bucket: discovery.splashup.co
           bucket-region: ap-southeast-2
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          #           invalidation: /
+          invalidation: /*
           delete-removed: true
           no-cache: true
           private: true
