@@ -92,7 +92,7 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
             </div>
             <div className="my-2">
               <form onSubmit={handleSearchSubmit}>
-                <SearchField name="search" value={search} onChange={handleSearchChange}></SearchField>
+                <SearchField name="search" value={search} maxLength={25} onChange={handleSearchChange}></SearchField>
               </form>
             </div>
 
