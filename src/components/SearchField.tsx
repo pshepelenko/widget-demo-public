@@ -7,7 +7,7 @@ const SearchField: FC<IProps> = ({ name, value, maxLength, onChange }): JSX.Elem
     <input
       autoFocus
       type="text"
-      placeholder={`i.e. Ikea brand"`}
+      placeholder={`i.e. Ikea brand`}
       className="w-full px-3 py-2 text-sm border-2 rounded-full focus:outline-none focus:ring focus:border-purple-300 "
       name={name}
       value={value}
