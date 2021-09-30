@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   plugins: [
+    //In development, we need a base html file (representing the host website) to attach the discovery module to.
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public', 'index.html'),
       fileName: './index.html',

@@ -1,5 +1,18 @@
 # Discovery module
 ---
+
+## Architecture
+
+Webpack: main bundler, uses `TypeScript` and `Babel` to transpile our code to vanilla javascript. It also uses `postcss-loader` as post CSS processor to run `tailwind` (our CSS utility) that will generate CSS file based on the classes used in our JS code.
+
+## Development
+
+- To start: `yarn start`
+
+## Deployment
+
+A github action has been created (see deploy.yml) to automatically deploy the app to S3 after any commit is pushed to the central repo (Github).
+
 ## Server Configuration
 
 In order to simulate `cross domain` communication we have created a custom host in our local host file (/etc/hosts) named <Vloggi-MacBook-Jeremy.local>. We can now simulate the loading of the discovery module from a different domain (<Vloggi-MacBook-Jeremy.local>) than the publisher website (<localhost>).
