@@ -141,3 +141,7 @@ At the moment the we only use Uglify plugin during production build time to mini
 ## Class prefixing
 
 Experimentation: we try to use the webpack loader [tailwind-classname-prefix-loader](https://github.com/frankleng/tailwind-classname-prefix-loader) to automatically add the prefix to the classnames within our JSX elements. It turns out the library is buggy (prefix unwanted classes and missing Tailwind classes). Therefore we'll not use this strategy until we find a proper way of updating those classnames.
+
+## Adding custom event to splashup button
+
+At the moment the discovery module listen to all click event and look for an attribute "data-product-id" to know if it need to get triggered or not. We could look at implementing a custom event instead that the discovery module could subscribe to as listening to all click event seems not a elegant solution.
