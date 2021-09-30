@@ -28,7 +28,7 @@ const ProductDescription: FC<IProps> = ({ product }): JSX.Element => {
           </strong>
         </p>
 
-        <Button size="big" onClick={() => window.open(product.url)}>
+        <Button size="big" onClick={() => window.open(product.url, '_self')}>
           View Product
         </Button>
       </div>
