@@ -17,8 +17,12 @@ const useApi = (url: string): IState => {
           setState({ data: responseData, error: null, isLoading: false })
         } catch (err) {
           const errorMessage: string = err.message
-
-          setState({ data: null, error: errorMessage, isLoading: false })
+          console.error(errorMessage)
+          setState({
+            data: null,
+            error: 'Oops something went wrong, do you want to try another search?',
+            isLoading: false
+          })
         }
       }, 1000)
     }

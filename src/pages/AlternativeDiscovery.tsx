@@ -65,6 +65,20 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
     setProductId(id)
   }
 
+  const getAlternativeResult = (error: string | null, isLoading: boolean, data: any | null) => {
+    if (error) return <p>{error}</p>
+
+    if (isLoading) return <LoadingWheel />
+
+    if (!data) return <p>Oops something went wrong</p>
+
+    if (data.alternatives.length === 0)
+      return <p>We haven't found an alternative that could match your criteria, try another search?</p>
+
+    if (data.alternatives.length > 0)
+      return <ProductCarousel alternatives={data.alternatives} selectProduct={selectProduct} />
+  }
+
   console.log('Rendering Module', productId, data?.alternatives)
 
   return (
@@ -100,13 +114,7 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
               Tailored Alternatives <small>powered by splashup.co</small>
             </p>
 
-            {error && <p className="text-white">{error}</p>}
-
-            {isLoading && <LoadingWheel />}
-
-            {data?.alternatives.length > 1 && (
-              <ProductCarousel alternatives={data.alternatives} selectProduct={selectProduct} />
-            )}
+            {getAlternativeResult(error, isLoading, data)}
           </div>
           <div className="flex-grow">
             {productSelected && <ProductDescription product={productSelected}></ProductDescription>}
