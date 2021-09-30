@@ -14,7 +14,7 @@ import useApi from '../hooks/useApi'
 //Images
 import logo from '../_images/logo.svg'
 
-const initialTags = ['On-sale', 'More exciting style', 'Light colours']
+const initialTags = ['Cheaper', 'Excellent condition', 'Exciting styles']
 
 const alternativeEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
 
