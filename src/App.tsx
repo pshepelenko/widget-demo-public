@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import AlternativeDiscovery from './pages/AlternativeDiscovery'
 
-const testProductId = '0d2c0df1-f87b-4a21-bcfa-c6b3103b0728' //For development only
+const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa' //For development only
+const testProductIdGoHock = '1035' //For development only
 
 const App = (): JSX.Element | null => {
   // States

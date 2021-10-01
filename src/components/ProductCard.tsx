@@ -8,16 +8,12 @@ const ProductCard: FC<IProps> = ({ id, product, selectProduct }): JSX.Element =>
     <div>
       <div
         id={`splashup-product-${id}`}
-        className="flex justify-center flex-shrink-0 w-48 mx-4 rounded cursor-pointer h-28 align-center bg-gray"
+        className="w-48 mx-4 rounded h-28 align-center bg-gray"
         style={{
           backgroundImage: `url(${product.image_url}`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          scrollSnapAlign: 'start',
-          transformOrigin: 'center center',
-          transform: 'scale(1)',
-          transition: 'transform 0.5s'
+          backgroundPosition: 'center'
         }}
         onClick={() => selectProduct(product.id)}
       ></div>
