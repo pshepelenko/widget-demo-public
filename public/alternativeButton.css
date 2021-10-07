@@ -1,0 +1,137 @@
+#su-alternative-button {
+  box-sizing: inherit;
+  display: flex;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  align-items: center;
+  transition: background-color 0.25s ease-in-out;
+  margin: -8px;
+  border-radius: 1.5rem;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16), 0 4px 8px 0 rgba(0, 0, 0, 0.24);
+  background-color: #fff;
+  cursor: pointer;
+  padding: 8px;
+  text-align: left;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  line-height: inherit;
+  color: #4d4d4d;
+  font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+  font-size: 0;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+}
+#su-alternative-button .su-icon {
+  box-sizing: inherit;
+  display: inline-block;
+  position: relative;
+  flex: 0 0 auto;
+  transition: border 0.5s ease-out;
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  animation: none;
+  vertical-align: middle;
+  text-align: left;
+  text-rendering: optimizeLegibility;
+  line-height: 16px;
+  color: #4d4d4d;
+  font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-direction: normal;
+  -webkit-box-flex: 0;
+}
+#su-alternative-button .su-label {
+  box-sizing: inherit;
+  display: inline-block;
+  flex: 1 1 auto;
+  transition: max-width 0.5s ease-in-out, width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  opacity: 0;
+  width: 5.5em;
+  max-width: 0;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: left;
+  text-indent: 4px;
+  text-rendering: optimizeLegibility;
+  line-height: 12px;
+  white-space: nowrap;
+  color: #4d4d4d;
+  font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-direction: normal;
+  -webkit-box-flex: 1;
+}
+#su-alternative-button:hover {
+  background-color: rgba(189, 233, 245, 0.9);
+}
+#su-alternative-button:hover .su-label {
+  opacity: 1;
+  cursor: pointer;
+  max-width: 7.5rem;
+  overflow: hidden;
+}
+#su-alternative-button:hover .su-icon-square {
+  transform: rotate(180deg);
+  opacity: 1;
+  margin: -0.75rem 0 0 0.1875rem;
+  box-shadow: 1px 1px 0 #bde9f5, -1px -1px 0 #bde9f5, 1px -1px 0 #bde9f5, -1px 1px 0 #bde9f5;
+  background: #bde9f5;
+  cursor: pointer;
+}
+#su-alternative-button .su-icon-square {
+  box-sizing: inherit;
+  display: block;
+  transition: transform 0.5s ease-in-out, margin 0.5s ease-in-out, opacity 0.5s ease-in-out,
+    background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out, -webkit-transform 0.5s ease-in-out,
+    -webkit-box-shadow 0.25s ease-in-out;
+  border: 1px solid #232323;
+  box-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  background: #fff;
+  width: 10px;
+  height: 10px;
+  text-align: left;
+  text-rendering: optimizeLegibility;
+  line-height: 16px;
+  color: #4d4d4d;
+  font-family: 'Proxima Nova', 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-direction: normal;
+}
+#su-alternative-button .su-icon-square:nth-child(1) {
+  margin: 0.25rem 0 0 0.25rem;
+}
+#su-alternative-button .su-icon-square:nth-child(2) {
+  opacity: 0;
+  margin: -0.75rem 0 0 0.125rem;
+}
+#su-alternative-button .su-icon-square:nth-child(3) {
+  margin: -0.625rem 0 0 0.125rem;
+}
+#su-alternative-button:hover .su-icon-square:nth-child(1) {
+  margin: 0.3125rem 0 0 0.3125rem;
+}
+#su-alternative-button:hover .su-icon-square:nth-child(2) {
+  opacity: 1;
+  margin: -0.75rem 0 0 0.1875rem;
+}
+#su-alternative-button:hover .su-icon-square:nth-child(3) {
+  margin: -0.75rem 0 0 0.0625rem;
+}

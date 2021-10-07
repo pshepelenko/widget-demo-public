@@ -8,30 +8,26 @@ const App = (): JSX.Element | null => {
   // States
   const [productId, setProductId] = useState<string | null>(null)
 
+  function openDiscoveryModule(this: HTMLElement, e: any) {
+    console.log('Event emitted')
+
+    const productId = e.target.getAttribute('data-product-id')
+
+    setProductId(productId)
+  }
+
   // Add listener
   useEffect(() => {
     console.log('App mounted')
 
-    function checkClickEvent(this: HTMLElement, e: any) {
-      // this function will be always called if a click happens,
-      // even if stopImmediatePropagation is used on the event target
-      console.log('Event emitted')
+    console.log('Adding listener...')
 
-      if (e.target?.className === 'splashup-alternatives') {
-        const productId = e.target.getAttribute('data-product-id')
+    document.documentElement.addEventListener('su-open-discovery-module', openDiscoveryModule, true)
 
-        setProductId(productId)
-      }
-    }
+    return () => {
+      console.log('Removing listener...')
 
-    console.log('Adding listener')
-
-    document.documentElement.addEventListener('click', checkClickEvent, true)
-
-    return function cleanUpListener() {
-      console.log('Removing listener')
-
-      document.documentElement.removeEventListener('click', checkClickEvent)
+      document.documentElement.removeEventListener('su-open-discovery-module', openDiscoveryModule)
     }
   }, [window.location])
 
