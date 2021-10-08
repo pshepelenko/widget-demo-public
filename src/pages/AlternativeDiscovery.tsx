@@ -11,8 +11,8 @@ import LoadingWheel from '../components/LoadingWheel'
 // Hooks
 import useApi from '../hooks/useApi'
 
-//Images
-import logo from '../_images/logo.svg'
+// Images
+import logo from '../_images/logo-gohock.png'
 
 const initialTags = ['Cheaper', 'Excellent condition', 'Exciting styles']
 
@@ -75,7 +75,7 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
     if (!data) return <p>Oops something went wrong</p>
 
     if (data.alternatives.length === 0)
-      return <p>We haven't found an alternative that could match your criteria, try another search?</p>
+      return <p>We haven&apos;t found an alternative that could match your criteria, try another search?</p>
 
     if (data.alternatives.length > 0)
       return <ProductCarousel alternatives={data.alternatives} selectProduct={selectProduct} />
@@ -86,11 +86,11 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
   return (
     <section id="splashup-discovery-module">
       <div className="fixed top-0 left-0 flex w-full h-full">
-        <div className="flex flex-col px-2 bg-purple-lightest" style={{ width: '330px' }}>
+        <div className="flex flex-col px-2 bg-white" style={{ width: '330px' }}>
           <div>
             {/* Logo and close button */}
             <div className="flex items-center justify-between">
-              <img src={logo} alt="discovery-logo" />
+              <img src={logo} width="100" alt="client-logo" />
               <CloseButton onClick={closeModule}></CloseButton>
             </div>
 

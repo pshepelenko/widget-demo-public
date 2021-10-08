@@ -4,8 +4,8 @@ const Button: FC<IProps> = ({ children, size, inverted = false, ...rest }): JSX.
   <button
     className={`p-2 text-xs font-medium border rounded shadow-sm focus:none ${
       inverted
-        ? 'text-purple-700  border-purple-700  hover:border-opacity-100'
-        : 'text-white bg-purple-700 border-transparent hover:bg-purple-700 '
+        ? 'text-black  border-secondary  hover:border-opacity-100'
+        : 'text-white bg-secondary border-transparent hover:bg-secondary '
     }
     ${size === 'big' ? 'text-sm px-8' : ''}
     `}

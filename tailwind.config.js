@@ -11,11 +11,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        blue: '#2D14F4', // primary
-        purple: {
-          DEFAULT: '#7048E8', // secondary
+        // Splashup style guide
+        // primary: '#2D14F4', splashup
+
+        // purple: {
+        //   DEFAULT: '#7048E8', // secondary
+        //   lightest: '#F6F4FF'
+        // },
+
+        //GoHock styleguide
+        secondary: {
+          DEFAULT: '#5cceff', // secondary
           lightest: '#F6F4FF'
         },
+
         pink: {
           DEFAULT: '#F784AD'
         },
