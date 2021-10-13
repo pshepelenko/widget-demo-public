@@ -9,13 +9,29 @@ Webpack: main bundler, uses `TypeScript` and `Babel` to transpile our code to va
 
 - To start: `yarn start`
 
-## Deployment
+## Deployment to S3
 
 A github action has been created (see deploy.yml) to automatically deploy the app to S3 after any commit is pushed to the central repo (Github).
 
 ## Server Configuration
 
 In order to simulate `cross domain` communication we have created a custom host in our local host file (/etc/hosts) named <Vloggi-MacBook-Jeremy.local>. We can now simulate the loading of the discovery module from a different domain (<Vloggi-MacBook-Jeremy.local>) than the publisher website (<localhost>).
+
+
+## Installing discovery module on client website
+
+### Adding "See similar" button 
+
+In order for the users (shoppers) to trigger the SplashUp Discovery Module (DM), our clients need to add a "See Similar" button to their website:
+- Add a button (`public/alternativeButton.html`) to each product image (top right or top left,...). 
+- Each button has an attribute `data-product-id`. The client will have to make sure that the corresponding product id is provided for this attribute (it will later help the DM to know what product the user has just clicked).
+- Finally, there is a css file for the button to also add to their codebase (see `public/alternativeButton.css`).
+
+
+### Adding our discovery module
+
+Simply paste the snippet from `src/thirdPartyLoader.js` just before the closing tag of your </body>. This will load the javascript and the style for the discovery module.
+
 
 ## Distributing and loading your application
 
