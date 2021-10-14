@@ -17,6 +17,7 @@ import logo from '../_images/logo-gohock.png'
 const initialTags = ['Cheaper', 'Excellent condition', 'Exciting styles']
 
 const alternativeEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
+const apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
 
 const AlternativeDiscovery = (props: IProps): JSX.Element => {
   // Props
@@ -31,7 +32,9 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
 
   // Hooks
   const { data, error, isLoading } = useApi(
-    `${alternativeEndPointUrl}?id=${productId}${tagsSelected.length > 0 ? `&tags=${tagsSelected.join(',')}` : ''}`
+    `${alternativeEndPointUrl}?apiKey=${apiKey}&id=${productId}${
+      tagsSelected.length > 0 ? `&tags=${tagsSelected.join(',')}` : ''
+    }`
   )
 
   // Set default product each time we fetch the alternatives
