@@ -8,9 +8,11 @@ module.exports = {
   plugins: [
     //In development, we need a base html file (representing the host website) to attach the discovery module to.
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public', 'index.html'),
+      template: path.resolve(__dirname, './src/hostWebsite', 'index.html'),
       fileName: './index.html',
-      inject: true
+      //We don't want the plugin to attach the index.js and index.css.
+      //It will be done directly in the index.html by adding a loader script to simulate what will happen on a host website.
+      inject: false //Otherwise webpack will add a link to index.css
     })
   ],
   devtool: 'inline-source-map',

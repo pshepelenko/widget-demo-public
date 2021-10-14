@@ -23,14 +23,16 @@ In order to simulate `cross domain` communication we have created a custom host 
 ### Adding "See similar" button 
 
 In order for the users (shoppers) to trigger the SplashUp Discovery Module (DM), our clients need to add a "See Similar" button to their website:
-- Add a button (`public/alternativeButton.html`) to each product image (top right or top left,...). 
+- Add a button (`alternativeButton.html`) to each product image (top right or top left,...). 
 - Each button has an attribute `data-product-id`. The client will have to make sure that the corresponding product id is provided for this attribute (it will later help the DM to know what product the user has just clicked).
-- Finally, there is a css file for the button to also add to their codebase (see `public/alternativeButton.css`).
+- Finally, there is a css file for the button to also add to their codebase (see `alternativeButtonStyle.html`).
+
+Note: if host website is built with React use `Ref` instead of `this` to access the button element that triggers the event `onClick={() => refBtn.current.dispatchEvent(new Event('su-open-discovery-module', { bubbles: false }))}`
 
 
 ### Adding our discovery module
 
-Simply paste the snippet from `src/thirdPartyLoader.js` just before the closing tag of your </body>. This will load the javascript and the style for the discovery module.
+Simply paste the snippet from `discoveryModuleLoader.html` just before the closing tag of your </body>. This will load the javascript and the style for the discovery module.
 
 
 ## Distributing and loading your application

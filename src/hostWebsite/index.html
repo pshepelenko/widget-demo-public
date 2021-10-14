@@ -1,13 +1,16 @@
 <!-- This html represent a client website where the discovery module will be loaded.
 It comes with a SplashUp alternative button (in the HTML) and its associated CSS (link in the header).
-This button will trigger the discovery module -->
+This button will trigger the discovery module.
+It also comes with a Discovery Module Loader which is a script that load the index.js necessary to run the DM -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Host website" />
-    <link href="/alternativeButton.css" rel="stylesheet" />
+
+    <%= require('html-loader!./alternativeButtonStyle.html').default %>
+
     <title>Host website</title>
   </head>
 
@@ -17,23 +20,10 @@ This button will trigger the discovery module -->
     <div style="display:flex;justify-content: space-between;">
       <div style="position:relative;margin:2rem;width:200;height:250">
         <img width="200" src="http://static.theiconic.com.au/p/Sonoran-Overheaad-2280811-1.jpg" />
-
-        <button
-          id="su-alternative-button"
-          data-product-id="10849791fa-f626-4ee2-9e2c-9052097847fa64"
-          onclick="this.dispatchEvent(new Event('su-open-discovery-module',{bubbles:false}))"
-        >
-          >
-          <span class="su-icon">
-            <span class="su-icon-square"></span>
-            <span class="su-icon-square"></span>
-            <span class="su-icon-square"></span>
-          </span>
-          <span class="su-label" style="width: 5.5em;">
-            See Similar
-          </span>
-        </button>
+        <%= require('html-loader!./alternativeButton.html').default %>
       </div>
     </div>
+
+    <%= require('html-loader!./discoveryModuleLoader.html').default %>
   </body>
 </html>

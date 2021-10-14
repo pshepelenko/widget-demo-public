@@ -3,13 +3,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   entry: {
-    index: './src/index.tsx'
+    //Here we tell webpack to build index.js and index.css
+    index: ['./src/index.tsx', './src/index.css']
     // vendor: ['react', 'react-dom']
   },
   output: {
     path: __dirname + '/dist',
-    publicPath: '/',
-    filename: '[name].js'
+    publicPath: '/'
+    // filename: '[name].js'
   },
   module: {
     rules: [
