@@ -1,24 +1,66 @@
-# Discovery module
+# Discovery module (DM)
 ---
 
 ## Architecture
 
-Webpack: main bundler, uses `TypeScript` and `Babel` to transpile our code to vanilla javascript. It also uses `postcss-loader` as post CSS processor to run `tailwind` (our CSS utility) that will generate CSS file based on the classes used in our JS code.
+`Webpack`: main bundler, uses `TypeScript` and `Babel` to transpile our code to vanilla javascript. It also uses `postcss-loader` as a post CSS processor to run `tailwind` (our CSS utility) that will generate CSS file based on the classes used in our JS code.
 
 ## Development
 
-- To start: `yarn start`
+To start the app in dev mode => `yarn start`.
+
+Webpack will build 2 things:
+1. It generates a index.html based on the one in `hostWebsite/index.htm` which embeds the `see similar` button and the DM loader. 
+2. It will generate 2 files for the DM:
+  - index.js (based on `src/index.tsx entry point)
+  - index.css (based on `src/index.css entry point)
+
+Those 2 files will not be added automatically to index.html (like in classic app using Webpack as a bundler). Because we want to simulate what will happen in prod on a client website, we are using the loader script to load those 2 files to the `index.html`. This will allow us to simulate a live environment even while developing.
 
 ## Deployment to S3
 
-A github action has been created (see deploy.yml) to automatically deploy the app to S3 after any commit is pushed to the central repo (Github).
+IMPORTANT: For the moment, any push to Github will trigger a a github action (see deploy.yml) to automatically deploy the app to the `S3 GoHock folder`. 
 
-## Server Configuration
+If we want to build another DM for another client, we need to:
+- Create another branch called `<new-client-name>`
+- Customise the branch:
+  1. Update logo
+  2. Update style
+  3. Update api key
+- Create a folder `<new-client-name>` in S3 
+- Update the `deploy.yml` file to create another deployment to that folder if a push is made on that branch
 
-In order to simulate `cross domain` communication we have created a custom host in our local host file (/etc/hosts) named <Vloggi-MacBook-Jeremy.local>. We can now simulate the loading of the discovery module from a different domain (<Vloggi-MacBook-Jeremy.local>) than the publisher website (<localhost>).
+## Authentication and multi-tenancy
+
+### One branch per client
+
+As stated above, since we are expecting more than 1 client, and that each client will have some level of customisation, we have created a S3 bucket that contains 1 folder per client currently using the DM:
+
+- S3 bucket `splashup-discovery-module`:
+  - /gohock
+  - /splashup
+  - /...
 
 
-## Installing discovery module on client website
+### AWS architecture
+
+To determinate which client is making the request, we pass an api key in the query string of the URL:
+
+=> e.g. `https://discovery.splashup.co/index.js?apiKey=38d89d-cdsc7908c-cds8c0-cd9`
+
+Once this URL hits our AWS infrastructure, `CloudFront` will forward the request to a `Lambda` function which will then verify the apiKey against a set of locally hardcoded keys and forward the request to the right S3 folder (if authentication is successful).
+
+Note1: to allow a `lamdba@edge` function to have access to the `query string parameters`:
+- Go to the cloudfront distribution
+- Edit the default behavior
+- Select "All" for `Cache key and origin requests` => `Legacy cache settings` => `Query strings`
+
+Note2: to see the `lamdba@edge` logs:
+- Go to `CloudFront` => `Monitoring` => `LambdaEdge` 
+- Choose your lambda and click `View metrics`
+- Then at the top right corner click on `View function logs` and select `Sydney zone`
+
+## Deploying discovery module on client website
 
 ### Adding "See similar" button 
 
@@ -34,6 +76,8 @@ Note: if host website is built with React use `Ref` instead of `this` to access 
 
 Simply paste the snippet from `discoveryModuleLoader.html` just before the closing tag of your </body>. This will load the javascript and the style for the discovery module.
 
+# General Knowledge
+---
 
 ## Distributing and loading your application
 
@@ -80,7 +124,7 @@ Using a fragment (#) instead of query string to pass an argument on a script url
 
 To output HTML into publisher website:
 
-- We will create a div element with an id ```<div id="splashup-root-div">``` at the end of the <body> element. This element will be unique and will be used as a parent element for the discovery module.
+- We will create a div element with an id `<div id="splashup-root">` at the end of the <body> element. This element will be unique and will be used as a parent element for the discovery module.
 
 ### Adding style
 
@@ -90,23 +134,21 @@ To output HTML into publisher website:
 - Loading a CSS file: 1 extra http call. Have to write a piece of code to know when the css is fully loaded otherwise the user could see a FOUC (Flash Of Unstyled Content).
 - Embedding CSS into JS: no extra call. CSS will be loaded before JS runs (no FOUC). Need to write a special func that converts CSS into string and add it in a variable into a JS file.
 
-For now we'll go with option 2.
-
 ### Avoiding conflict with the publisher website style
 
 Best technique is to:
 
-- Namespacing your stylesheet by prefixing your classes with "splashup":
+- Namespacing your stylesheet by prefixing your classes with "su":
 ```
-  <h3 class="splashup-product">Nikon E90 Digital SLR</h3>
+  <h3 class="su-product">Nikon E90 Digital SLR</h3>
   <img src="http://camerastork.com/img/products/1337-small.png"/>
 ```
 * See `Room for improvement` section
 
 - Over specifying your style using 2 ids:
 ```
-  <div id="splashup-root">
-      <div id="splashup-discovery-module">
+  <div id="su-root">
+      <div id="su-discovery-module">
          ...discovery module
       </div>
   </div>”
