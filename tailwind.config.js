@@ -4,10 +4,10 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx,html}'], //Tailwind will look into those files and remove the any css properties that are not being seen in those files' classes (tree shaking).
   mode: 'jit',
   darkMode: false,
-  //Here we are over specifying the classes of tailwind to make sure:
-  //1. they won't affect any other element of the host website.
-  //2. If the host website uses tailwind classes, our classes won't be overwritten by the host website classes.
-  important: '#splashup-root #splashup-discovery-module',
+  // Here we are over specifying the classes of tailwind to make sure:
+  // Because the option below does not prepend the "Preflight" style (normalize) we will use 'postcss-prepend-selector'  => https://github.com/tailwindlabs/tailwindcss/discussions/2682
+  // in order to achieve the same result (see postcss.config.js)
+  // important: '#splashup-root #splashup-discovery-module',
   theme: {
     extend: {
       colors: {
@@ -39,9 +39,8 @@ module.exports = {
           lightest: '#F8F9FA'
         }
       },
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
-      },
+      // sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+      fontFamily: {},
       typography: {
         DEFAULT: {
           css: {
@@ -65,11 +64,7 @@ module.exports = {
     extend: {}
   },
   corePlugins: {
-    // Here we disable "preflight" which adds a set of style built upon "modern-normalize".
-    // The problem is that those style are not prefix with the ids of "important" => '#splashup-root #splashup-discovery-module'
-    // So those base style will also apply to the host website which is not something we want to alter
-    // => https://github.com/tailwindlabs/tailwindcss/discussions/2682
-    preflight: false
+    preflight: true //enable reset/normalize style to be added at build time
   },
   plugins: [require('@tailwindcss/typography')]
 }
