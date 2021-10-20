@@ -1,7 +1,7 @@
 <button
   id="su-alternative-button"
   data-product-id="1064"
-  onclick="this.dispatchEvent(new Event('su-open-discovery-module',{bubbles:false}))"
+  onclick="event.stopPropagation();this.dispatchEvent(new Event('su-open-discovery-module',{bubbles:false}))"
 >
   >
   <span class="su-icon">
