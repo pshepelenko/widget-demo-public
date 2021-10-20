@@ -64,5 +64,12 @@ module.exports = {
   variants: {
     extend: {}
   },
+  corePlugins: {
+    // Here we disable "preflight" which adds a set of style built upon "modern-normalize".
+    // The problem is that those style are not prefix with the ids of "important" => '#splashup-root #splashup-discovery-module'
+    // So those base style will also apply to the host website which is not something we want to alter
+    // => https://github.com/tailwindlabs/tailwindcss/discussions/2682
+    preflight: false
+  },
   plugins: [require('@tailwindcss/typography')]
 }
