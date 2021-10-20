@@ -88,7 +88,7 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
 
   return (
     <section id="splashup-discovery-module">
-      <div className="fixed top-0 left-0 flex w-full h-full">
+      <div className="fixed top-0 left-0 z-10 flex w-full h-full">
         <div className="flex flex-col px-2 bg-white" style={{ width: '330px' }}>
           <div>
             {/* Logo and close button */}
@@ -121,6 +121,7 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
 
             {getAlternativeResult(error, isLoading, data)}
           </div>
+          <LoadingWheel />
           <div className="flex-grow">
             {productSelected && <ProductDescription product={productSelected}></ProductDescription>}
           </div>

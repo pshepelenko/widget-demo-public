@@ -13,12 +13,12 @@ const ProductCarousel: FC<IProps> = ({ alternatives, selectProduct }): JSX.Eleme
         slide={1}
         swiping={true}
         leftArrow={
-          <div className="absolute z-10 -translate-y-1/2 left-1 top-14">
+          <div className="absolute z-20 -translate-y-1/2 left-1 top-14">
             <ProductCarouselArrow direction="left"></ProductCarouselArrow>
           </div>
         }
         rightArrow={
-          <div className="absolute z-10 -translate-y-1/2 right-1 top-14">
+          <div className="absolute z-20 -translate-y-1/2 right-1 top-14">
             <ProductCarouselArrow direction="right"></ProductCarouselArrow>
           </div>
         }
