@@ -121,7 +121,6 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
 
             {getAlternativeResult(error, isLoading, data)}
           </div>
-          <LoadingWheel />
           <div className="flex-grow">
             {productSelected && <ProductDescription product={productSelected}></ProductDescription>}
           </div>
