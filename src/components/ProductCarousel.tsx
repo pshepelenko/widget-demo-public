@@ -35,7 +35,7 @@ const ProductCarousel: FC<IProps> = ({ alternatives, selectProduct }): JSX.Eleme
           </div>
         }
       >
-        {carouselPages.map((page: IProduct[], index) => (
+        {carouselPages.map((page: IProduct[], index: number) => (
           <div key={index} className="flex flex-row flex-wrap">
             {page.map(product => (
               <ProductCarouselCard
