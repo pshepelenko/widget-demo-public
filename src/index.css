@@ -3,6 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Because we cannot use pseudo element with Tailwind classes  */
+.tab-underline::after {
+  @apply bg-secondary;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 90%;
+  height: 3px;
+  margin-left: 5%;
+}
+
 /* Spinning wheel style*/
 .loader,
 .loader:after {

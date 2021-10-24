@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { GlobalProvider } from './contexts/GlobalProvider'
 import AlternativeDiscovery from './pages/AlternativeDiscovery'
 
-const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa' // For development only
-const testProductIdGoHock = '1035' // For development only
+// For development only
+const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa'
+const testProductIdGoHock = '587'
 
 const App = (): JSX.Element | null => {
   // States
@@ -39,6 +41,10 @@ const App = (): JSX.Element | null => {
 
   console.log('Rendering App', productId)
 
-  return <AlternativeDiscovery productId={productId} closeModule={closeModule}></AlternativeDiscovery>
+  return (
+    <GlobalProvider>
+      <AlternativeDiscovery productId={productId} closeModule={closeModule}></AlternativeDiscovery>
+    </GlobalProvider>
+  )
 }
 export default App

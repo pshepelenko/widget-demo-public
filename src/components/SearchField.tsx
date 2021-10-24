@@ -5,10 +5,9 @@ import magnifier from '../_images/magnifier.svg'
 const SearchField: FC<IProps> = ({ name, value, maxLength, onChange }): JSX.Element => (
   <div className="relative">
     <input
-      autoFocus
       type="text"
       placeholder={`i.e. Ikea brand`}
-      className="w-full px-3 py-2 text-sm border-2 rounded-full focus:outline-none focus:ring focus:border-purple-300 "
+      className="w-full px-3 py-1 text-sm border-2 rounded-full focus:ring-1 focus:outline-none focus:ring-primary focus:ring-opacity-50"
       name={name}
       value={value}
       maxLength={maxLength}
