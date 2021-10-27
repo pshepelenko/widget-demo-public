@@ -94,17 +94,6 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
                 <CloseButton onClick={closeModule}></CloseButton>
               </div>
 
-              {/* Search field */}
-              <div className="mx-4 my-4">
-                {/* autoComplete="off" prevent browser to display suggestions */}
-                <form className="relative" autoComplete="off" onSubmit={handleSearchSubmit}>
-                  <SearchField name="search" value={search} maxLength={25} onChange={handleSearchChange}></SearchField>
-                  <div className="absolute -bottom-4">
-                    {searchFieldError && <FormErrorMessage message={searchFieldError} />}
-                  </div>
-                </form>
-              </div>
-
               {/* Tags */}
               <div className="flex flex-wrap justify-center my-2 ">
                 {tags.map(tag => (
@@ -117,6 +106,18 @@ const AlternativeDiscovery = (props: IProps): JSX.Element => {
                     {tag}
                   </Button>
                 ))}
+              </div>
+
+              {/* Search field */}
+              <div className="mx-4 mt-2 mb-4">
+                {/* autoComplete="off" prevent browser to display suggestions */}
+                <form className="relative" autoComplete="off" onSubmit={handleSearchSubmit}>
+                  <p className="text-sm text-center">Or try us out, we'll do our best</p>
+                  <SearchField name="search" value={search} maxLength={25} onChange={handleSearchChange}></SearchField>
+                  <div className="absolute -bottom-4">
+                    {searchFieldError && <FormErrorMessage message={searchFieldError} />}
+                  </div>
+                </form>
               </div>
             </div>
             <Tabs nbOfProduct={products?.length || 0} nbOfProductHistory={history.length} tab={tab} setTab={setTab} />

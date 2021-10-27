@@ -7,7 +7,7 @@ const SearchField: FC<IProps> = ({ name, value, maxLength, onChange }): JSX.Elem
     <input
       type="text"
       placeholder={`i.e. Ikea brand`}
-      className="w-full px-3 py-1 text-sm border-2 rounded-full focus:ring-1 focus:outline-none focus:ring-primary focus:ring-opacity-50"
+      className="w-full px-2 py-1 text-sm border-2 rounded-full focus:ring-1 focus:outline-none focus:ring-primary focus:ring-opacity-50"
       name={name}
       value={value}
       maxLength={maxLength}
