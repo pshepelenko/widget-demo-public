@@ -91,7 +91,7 @@ const useApi = (url: string) => {
           const errorMessage: string = err.message
           console.error(errorMessage)
           dispatch({
-            type: 'PRODUCT_FETCH_ERROR',
+            type: 'PRODUCTS_FETCH_ERROR',
             payload: 'Oops something went wrong, do you want to try another search?'
           })
         }
