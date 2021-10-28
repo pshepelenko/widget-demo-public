@@ -25,7 +25,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
   // Fetch
   useApi(
     `${alternativeEndPointUrl}?apiKey=${apiKey}&id=${productId}${
-      tagsSelected.length > 0 ? `&tags=${tagsSelected.join(',')}` : 'GlobalProviderState'
+      tagsSelected.length > 0 ? `&tags=${tagsSelected.join(',')}` : ''
     }`
   )
 
