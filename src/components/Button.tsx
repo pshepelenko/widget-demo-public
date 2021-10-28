@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react'
 
-const Button: FC<IProps> = ({ children, size, inverted = false, ...rest }): JSX.Element => (
+const Button: FC<IProps> = ({ children, size, inverted = false, ...rest }) => (
   <button
     className={`p-2 text-xs font-medium border rounded shadow-sm focus:none ${
       inverted

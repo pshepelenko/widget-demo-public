@@ -12,6 +12,7 @@ const initialState = {
   isLoading: false,
   search: '',
   searchFieldError: null,
+  tabSelected: 1,
   tags: initialTags,
   tagsSelected: []
 }
@@ -19,7 +20,7 @@ const initialState = {
 export const GlobalProviderState = React.createContext<IGlobalProvider>(initialState)
 export const GlobalProviderDispatch = React.createContext<any>(null)
 
-export const GlobalProvider = ({ children }: any) => {
+export const GlobalProvider = ({ children }: { children: JSX.Element }): JSX.Element => {
   const [state, dispatch] = useReducer(useGlobalReducer, initialState)
 
   return (
@@ -49,6 +50,7 @@ export interface IGlobalProvider {
   isLoading: boolean
   search: string
   searchFieldError: string | null
+  tabSelected: number
   tags: string[]
   tagsSelected: string[]
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GlobalProvider } from './contexts/GlobalProvider'
-import AlternativeDiscovery from './pages/AlternativeDiscovery'
+import AlternativeDiscovery from './pages/Main'
 
 // For development only
 const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa'
@@ -10,7 +10,7 @@ const App = (): JSX.Element | null => {
   // States
   const [productId, setProductId] = useState<string | null>(null)
 
-  function openDiscoveryModule(this: HTMLElement, e: any) {
+  const openDiscoveryModule = (e: any) => {
     console.log('Event emitted')
 
     const productId = e.target.getAttribute('data-product-id')
@@ -20,9 +20,7 @@ const App = (): JSX.Element | null => {
 
   // Add listener
   useEffect(() => {
-    console.log('App mounted')
-
-    console.log('Adding listener...')
+    console.log('App mounted, adding listener...')
 
     document.documentElement.addEventListener('su-open-discovery-module', openDiscoveryModule, true)
 

@@ -51,6 +51,10 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
       return { ...state, tagsSelected: newTagsSelectedArr }
     }
 
+    case 'CHANGE_TAB': {
+      return { ...state, tabSelected: action.payload }
+    }
+
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
     }
@@ -67,6 +71,7 @@ export interface IAction {
     | 'SUBMIT_NEW_SEARCH'
     | 'SEARCH_ERROR'
     | 'SELECT_TAG'
+    | 'CHANGE_TAB'
   payload?: any
 }
 
