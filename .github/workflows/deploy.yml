@@ -1,6 +1,7 @@
 name: Build and S3 Deploy
-on: [push]
- branches:
+on:
+  push:
+    branches:
       - master
 jobs:
   run:
