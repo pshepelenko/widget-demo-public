@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx,html}'], //Tailwind will look into those files and remove the any css properties that are not being seen in those files' classes (tree shaking).
+  purge: ['./src/**/*.{js,jsx,ts,tsx,html}'], // Tailwind will look into those files and remove the any css properties that are not being seen in those files' classes (tree shaking).
   mode: 'jit',
   darkMode: false,
   // Here we are over specifying the classes of tailwind to make sure:
@@ -19,7 +19,7 @@ module.exports = {
         //   lightest: '#F6F4FF'
         // },
 
-        //GoHock styleguide
+        // GoHock style guide
         secondary: {
           DEFAULT: '#5cceff', // secondary
           lightest: '#F6F4FF'
@@ -64,7 +64,7 @@ module.exports = {
     extend: {}
   },
   corePlugins: {
-    preflight: true //enable reset/normalize style to be added at build time
+    preflight: true // enable reset/normalize style to be added at build time
   },
   plugins: [require('@tailwindcss/typography')]
 }

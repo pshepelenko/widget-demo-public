@@ -4,7 +4,7 @@ import { Carousel } from '@trendyol-js/react-carousel'
 import ProductCarouselCard from './ProductCarouselCard'
 import ProductCarouselArrow from './ProductCarouselArrow'
 
-const ProductCarousel: FC<IProps> = ({ alternatives, selectProduct }): JSX.Element => {
+const ProductCarousel: FC<IProps> = ({ alternatives, handleAlternativeClick }): JSX.Element => {
   const nbOfPage = 4
 
   const carouselPages = alternatives.reduce((acc: any, product, index) => {
@@ -41,7 +41,7 @@ const ProductCarousel: FC<IProps> = ({ alternatives, selectProduct }): JSX.Eleme
               <ProductCarouselCard
                 key={product.id}
                 product={product}
-                selectProduct={selectProduct}
+                handleAlternativeClick={handleAlternativeClick}
               ></ProductCarouselCard>
             ))}
           </div>
@@ -53,7 +53,7 @@ const ProductCarousel: FC<IProps> = ({ alternatives, selectProduct }): JSX.Eleme
 
 type IProps = {
   alternatives: IProduct[]
-  selectProduct: (arg: string) => void
+  handleAlternativeClick: (arg: string) => void
 }
 
 export default ProductCarousel

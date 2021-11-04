@@ -17,7 +17,7 @@ const MainFilteringSection: FC<IProps> = props => {
   const { search, searchFieldError, tags, tagsSelected } = useContext(GlobalProviderState)
 
   // Props
-  const { closeModule, toggleTag, handleSearchChange, handleSearchSubmit } = props
+  const { closeModule, handleTagClick, handleSearchChange, handleSearchSubmit } = props
 
   return (
     <div className="px-2 bg-gray-100 drop-shadow-xl">
@@ -33,7 +33,7 @@ const MainFilteringSection: FC<IProps> = props => {
           <Button
             key={tag}
             inverted={!tagsSelected.includes(tag)}
-            onClick={() => toggleTag(tag)}
+            onClick={() => handleTagClick(tag)}
             style={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
           >
             {tag}
@@ -58,7 +58,7 @@ const MainFilteringSection: FC<IProps> = props => {
 
 interface IProps {
   closeModule: () => void
-  toggleTag: (arg: string) => void
+  handleTagClick: (arg: string) => void
   handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void
   handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void
 }

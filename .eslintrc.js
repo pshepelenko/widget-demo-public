@@ -18,6 +18,9 @@ module.exports = {
     ecmaFeatures: {
       jsx: true, // Allows for the parsing of JSX
       arrowFunctions: true
+    },
+    react: {
+      version: '16'
     }
   },
   ignorePatterns: ['node_modules', 'dist'],
@@ -34,6 +37,9 @@ module.exports = {
     }
   },
   rules: {
+    'no-non-null-assertion': 'off',
+    'no-undef': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'no-alert': 'off',
     'no-console': 'off',

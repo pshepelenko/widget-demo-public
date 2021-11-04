@@ -11,6 +11,10 @@ import useApi from '../hooks/useApi'
 // Contexts
 import { GlobalProviderDispatch, GlobalProviderState, IProduct } from '../contexts/GlobalProvider'
 
+// Utils
+import { logEvent } from '../utils/logEvent'
+import { event } from '../utils/googleAnalytics'
+
 const alternativeEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
 const apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
 
@@ -29,8 +33,10 @@ const AlternativeDiscovery: FC<IProps> = props => {
     }`
   )
 
-  const toggleTag = (tagClicked: string) => {
+  const handleTagClick = (tagClicked: string) => {
     dispatch({ type: 'SELECT_TAG', payload: tagClicked })
+    event('click_tag', tagClicked)
+    logEvent('click_tag', { value: tagClicked })
   }
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -49,10 +55,21 @@ const AlternativeDiscovery: FC<IProps> = props => {
     }
 
     dispatch({ type: 'SUBMIT_NEW_SEARCH', payload: search })
+    event('submit_semantic_search', search)
+    logEvent('submit_semantic_search', { value: search })
   }
 
-  const selectProduct = (id: string) => {
+  const handleAlternativeClick = (id: string) => {
     dispatch({ type: 'SELECT_PRODUCT', payload: id })
+    event('click_alternative', id)
+    logEvent('click_alternative', { value: id })
+  }
+
+  const handleProductClick = async (product: IProduct) => {
+    event('click_view_product', product.id)
+    // Here we wait till we log the event because of the window.open() coming next
+    await logEvent('click_view_product', { value: product.id })
+    window.open(product.url, '_self')
   }
 
   const changeTab = (newTab: number) => {
@@ -68,11 +85,15 @@ const AlternativeDiscovery: FC<IProps> = props => {
           <div className="flex flex-col h-full">
             <MainFilteringSection
               closeModule={closeModule}
-              toggleTag={toggleTag}
+              handleTagClick={handleTagClick}
               handleSearchChange={handleSearchChange}
               handleSearchSubmit={handleSearchSubmit}
             />
-            <MainResultsSection changeTab={changeTab} selectProduct={selectProduct} />
+            <MainResultsSection
+              changeTab={changeTab}
+              handleAlternativeClick={handleAlternativeClick}
+              handleProductClick={handleProductClick}
+            />
           </div>
         </div>
         <MainOverlay closeModule={closeModule} />

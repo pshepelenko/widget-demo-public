@@ -15,7 +15,7 @@ const MainResultsSection: FC<IProps> = props => {
   const { history, tabSelected, error, isLoading, products, productSelected } = useContext(GlobalProviderState)
 
   // Props
-  const { changeTab, selectProduct } = props
+  const { changeTab, handleAlternativeClick, handleProductClick } = props
 
   const getAlternativeResult = (error: string | null, isLoading: boolean, products: IProduct[] | null) => {
     if (error) return <p>{error}</p>
@@ -27,7 +27,8 @@ const MainResultsSection: FC<IProps> = props => {
     if (products.length === 0)
       return <p>We haven&apos;t found an alternative that could match your criteria, try another search?</p>
 
-    if (products.length > 0) return <ProductCarousel alternatives={products} selectProduct={selectProduct} />
+    if (products.length > 0)
+      return <ProductCarousel alternatives={products} handleAlternativeClick={handleAlternativeClick} />
   }
 
   return (
@@ -42,11 +43,13 @@ const MainResultsSection: FC<IProps> = props => {
         {tabSelected === 1 && <div className="flex-grow px-2">{getAlternativeResult(error, isLoading, products)}</div>}
         {tabSelected === 2 && (
           <div className="flex-grow px-2">
-            <ProductCarousel alternatives={history} selectProduct={selectProduct} />
+            <ProductCarousel alternatives={history} handleAlternativeClick={handleAlternativeClick} />
           </div>
         )}
         <div className="px-2 ">
-          {productSelected && <ProductDescription product={productSelected}></ProductDescription>}
+          {productSelected && (
+            <ProductDescription product={productSelected} handleProductClick={handleProductClick}></ProductDescription>
+          )}
         </div>
         <Footer />
       </div>
@@ -55,8 +58,9 @@ const MainResultsSection: FC<IProps> = props => {
 }
 
 interface IProps {
-  selectProduct: (arg: string) => void
   changeTab: (arg: number) => void
+  handleAlternativeClick: (arg: string) => void
+  handleProductClick: (arg: IProduct) => void
 }
 
 export default MainResultsSection

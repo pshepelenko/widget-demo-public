@@ -3,8 +3,8 @@ import { GlobalProvider } from './contexts/GlobalProvider'
 import AlternativeDiscovery from './pages/Main'
 
 // For development only
-const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa'
-const testProductIdGoHock = '587'
+// const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa'
+// const testProductIdGoHock = '587'
 
 const App = (): JSX.Element | null => {
   // States
