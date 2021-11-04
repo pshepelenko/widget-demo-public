@@ -5,7 +5,7 @@ export const logEvent = async (event: string, payload: any): Promise<void> => {
       body: JSON.stringify({ event_type: event, event_payload: payload })
     })
 
-    await response.json()
+    await response
   } catch (err) {
     const errorMessage: string = err.message
     console.error('Could not log the event', errorMessage)
