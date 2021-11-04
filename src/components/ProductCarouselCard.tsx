@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { IProduct } from '../contexts/GlobalProvider'
 
-const ProductCarouselCard: FC<IProps> = ({ product, selectProduct }): JSX.Element => {
+const ProductCarouselCard: FC<IProps> = ({ product, handleAlternativeClick }): JSX.Element => {
   return (
     <div className="w-1/2 p-1">
       <div
@@ -12,7 +12,7 @@ const ProductCarouselCard: FC<IProps> = ({ product, selectProduct }): JSX.Elemen
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
-        onClick={() => selectProduct(product.id)}
+        onClick={() => handleAlternativeClick(product.id)}
       ></div>
     </div>
   )
@@ -20,7 +20,7 @@ const ProductCarouselCard: FC<IProps> = ({ product, selectProduct }): JSX.Elemen
 
 type IProps = {
   product: IProduct
-  selectProduct: (arg: string) => void
+  handleAlternativeClick: (arg: string) => void
 }
 
 export default ProductCarouselCard

@@ -1,277 +1,65 @@
-[
-	{
-		"id": "02ccee99-31b5-47d3-8de9-8ed773d2e32b",
-		"brand_name": "Atmos&Here",
-		"gender": "female",
-		"image_alt_text": "Roll-Sleeve-Shirt-5412311-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Roll-Sleeve-Shirt-5412311-1.jpg",
-		"name": "Roll Sleeve Shirt Tops Black Roll Sleeve..",
-		"offer_price": 50,
-		"retail_price": 50,
-		"url": "https://www.theiconic.com.au/roll-sleeve-shirt-1132145.html"
-	},
-	{
-		"id": "039e2534-076b-4931-bd89-6510af1cd2d4",
-		"brand_name": "Cartel & Willow",
-		"gender": "female",
-		"image_alt_text": "Sailor-Tee-Dress-9077821-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Sailor-Tee-Dress-9077821-1.jpg",
-		"name": "Sailor Tee Dress Dresses Red Sailor Tee..",
-		"offer_price": 99,
-		"retail_price": 99,
-		"url": "https://www.theiconic.com.au/sailor-tee-dress-1287709.html"
-	},
-	{
-		"id": "08a086be-4d77-4fab-ac26-502009a23c39",
-		"brand_name": "Free by Cotton On",
-		"gender": "female",
-		"image_alt_text": "Sal-Crew-Neck---Teens-7716721-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Sal-Crew-Neck---Teens-7716721-1.jpg",
-		"name": "Sal Crew Neck  Teens Sweats Very Berry..",
-		"offer_price": 24,
-		"retail_price": 24,
-		"url": "https://www.theiconic.com.au/sal-crew-neck-teens-1276177.html"
-	},
-	{
-		"id": "0dd33e05-e7e3-45e7-812c-efd568144ef6",
-		"brand_name": "Runaway the Label",
-		"gender": "female",
-		"image_alt_text": "Sagittarius-Tee-5652011-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Sagittarius-Tee-5652011-1.jpg",
-		"name": "Sagittarius Tee T-Shirts & Singlets..",
-		"offer_price": 55,
-		"retail_price": 55,
-		"url": "https://www.theiconic.com.au/sagittarius-tee-1102565.html"
-	},
-	{
-		"id": "35aad4d3-2c23-44a6-aad1-1b8cd8e69701",
-		"brand_name": "SALTY CRUSH",
-		"gender": "female",
-		"image_alt_text": "alt_image_name",
-		"image_url": "https://c.cfjump.com/Products/57071/134317213.jpg",
-		"name": "Lets Grow Wild Tee",
-		"offer_price": 45,
-		"retail_price": 45,
-		"url": "https://saltycrush.myshopify.com/products/lets-grow-wild-tee"
-	},
-	{
-		"id": "3b05d6b6-eb59-4dc3-82c3-9d98981c9bfe",
-		"brand_name": "VILLIN",
-		"gender": "female",
-		"image_alt_text": "NFL-V2-Lace-Up-Sports-Bra-6490621-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/NFL-V2-Lace-Up-Sports-Bra-6490621-1.jpg",
-		"name": "NFL V2 Lace Up Sports Bra Crop Tops..",
-		"offer_price": 70,
-		"retail_price": 70,
-		"url": "https://www.theiconic.com.au/nfl-v2-lace-up-sports-bra-1260946.html"
-	},
-	{
-		"id": "419e51a5-8d48-4b08-9e3e-227ff02c842e",
-		"brand_name": "SALTY CRUSH",
-		"gender": "female",
-		"image_alt_text": "alt_image_name",
-		"image_url": "https://c.cfjump.com/Products/57071/133586431.jpg",
-		"name": "Jessabelle Strapless Maxi Dress",
-		"offer_price": 38,
-		"retail_price": 38,
-		"url": "https://saltycrush.myshopify.com/products/jessabelle-strapless-maxi-dress"
-	},
-	{
-		"id": "541c4935-bde9-4303-90b6-0f2354520572",
-		"brand_name": "SALTY CRUSH",
-		"gender": "female",
-		"image_alt_text": "alt_image_name",
-		"image_url": "https://c.cfjump.com/Products/57071/136193701.jpg",
-		"name": "Lily Cardigan Navy",
-		"offer_price": 69,
-		"retail_price": 69,
-		"url": "https://saltycrush.myshopify.com/products/lily-cardigan-navy"
-	},
-	{
-		"id": "5b5d2a67-c5ca-4ecd-882d-7f96b4e1164c",
-		"brand_name": "Sea Level Australia",
-		"gender": "female",
-		"image_alt_text": "Essentials-Twist-Front-Multifit-Boyleg-One-Piece-1875621-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Essentials-Twist-Front-Multifit-Boyleg-One-Piece-1875621-1.jpg",
-		"name": "Essentials Twist Front Multifit Boyleg..",
-		"offer_price": 110,
-		"retail_price": 110,
-		"url": "https://www.theiconic.com.au/essentials-twist-front-multifit-boyleg-one-piece-1265781.html"
-	},
-	{
-		"id": "5cb6fd35-4b80-4f71-a654-29fec6938228",
-		"brand_name": "The Fated",
-		"gender": "female",
-		"image_alt_text": "Rosie-Shirt-9429321-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Rosie-Shirt-9429321-1.jpg",
-		"name": "Rosie Shirt Tops Light Tan Rosie Shirt",
-		"offer_price": 39,
-		"retail_price": 39,
-		"url": "https://www.theiconic.com.au/rosie-shirt-1239249.html"
-	},
-	{
-		"id": "6bbacdf9-ce3d-473e-90bd-76d7d8f4607e",
-		"brand_name": "Papinelle",
-		"gender": "female",
-		"image_alt_text": "Mid-Rise-Hipster-Sleep-Knickers-6733421-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Mid-Rise-Hipster-Sleep-Knickers-6733421-1.jpg",
-		"name": "Mid Rise Hipster Sleep Knickers..",
-		"offer_price": 20,
-		"retail_price": 20,
-		"url": "https://www.theiconic.com.au/mid-rise-hipster-sleep-knickers-1243376.html"
-	},
-	{
-		"id": "6ec3112f-3510-4503-83ab-f7f93a6d29a6",
-		"brand_name": "Forcast",
-		"gender": "female",
-		"image_alt_text": "Sahara-Colour-Block-Poncho-2469721-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Sahara-Colour-Block-Poncho-2469721-1.jpg",
-		"name": "Sahara Colour Block Poncho Jumpers &..",
-		"offer_price": 39,
-		"retail_price": 39,
-		"url": "https://www.theiconic.com.au/sahara-colour-block-poncho-1279642.html"
-	},
-	{
-		"id": "7bac4911-abad-448d-8455-ba46cb15db90",
-		"brand_name": "Nana Judy",
-		"gender": "female",
-		"image_alt_text": "Matira-Pants-7146331-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Matira-Pants-7146331-1.jpg",
-		"name": "Matira Pants Pants Vintage Black Matira..",
-		"offer_price": 100,
-		"retail_price": 100,
-		"url": "https://www.theiconic.com.au/matira-pants-1336417.html"
-	},
-	{
-		"id": "829dd905-2916-4c0f-b623-4077473ae090",
-		"brand_name": "SALTY CRUSH",
-		"gender": "female",
-		"image_alt_text": "alt_image_name",
-		"image_url": "https://c.cfjump.com/Products/57071/134493053.jpg",
-		"name": "Meredith Mini Dress Purple",
-		"offer_price": 33,
-		"retail_price": 33,
-		"url": "https://saltycrush.myshopify.com/products/meredith-mini-dress-purple"
-	},
-	{
-		"id": "87b15d24-1cbc-4e95-b790-c1874db77087",
-		"brand_name": "Sportscraft",
-		"gender": "female",
-		"image_alt_text": "Georgina-Darla-Shirt-3769801-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Georgina-Darla-Shirt-3769801-1.jpg",
-		"name": "Georgina Darla Shirt Tops navy Georgina..",
-		"offer_price": 49,
-		"retail_price": 49,
-		"url": "https://www.theiconic.com.au/georgina-darla-shirt-1089673.html"
-	},
-	{
-		"id": "98787cc1-798a-414a-9431-554f6808e9ab",
-		"brand_name": "Apartment Clothing",
-		"gender": "female",
-		"image_alt_text": "Parker-Obi-Shirt-Dress-9577711-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Parker-Obi-Shirt-Dress-9577711-1.jpg",
-		"name": "Parker Obi Shirt Dress Dresses Pink..",
-		"offer_price": 30,
-		"retail_price": 30,
-		"url": "https://www.theiconic.com.au/parker-obi-shirt-dress-1177759.html"
-	},
-	{
-		"id": "a58ec943-4bbb-4e7a-bb40-27b6aa5ad72a",
-		"brand_name": "Santa Cruz",
-		"gender": "female",
-		"image_alt_text": "Flex-Dot-Tee---Kids-Teens-6293221-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Flex-Dot-Tee---Kids-Teens-6293221-1.jpg",
-		"name": "Flex Dot Tee  Kids Teens T-Shirts &..",
-		"offer_price": 40,
-		"retail_price": 40,
-		"url": "https://www.theiconic.com.au/flex-dot-tee-kids-teens-1223926.html"
-	},
-	{
-		"id": "bed464df-4ff9-4780-b152-471a67a407eb",
-		"brand_name": "M.N.G",
-		"gender": "female",
-		"image_alt_text": "Rony-Blouse-1452321-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Rony-Blouse-1452321-1.jpg",
-		"name": "Rony Blouse Tops Black Rony Blouse",
-		"offer_price": 48,
-		"retail_price": 48,
-		"url": "https://www.theiconic.com.au/rony-blouse-1232541.html"
-	},
-	{
-		"id": "c1315d40-26f3-46e1-b3c8-a73085f86ec7",
-		"brand_name": "Lorna Jane",
-		"gender": "female",
-		"image_alt_text": "LJ-Maternity-Printed-Sports-Bra-3259321-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/LJ-Maternity-Printed-Sports-Bra-3259321-1.jpg",
-		"name": "LJ Maternity Printed Sports Bra Sports..",
-		"offer_price": 46,
-		"retail_price": 46,
-		"url": "https://www.theiconic.com.au/lj-maternity-printed-sports-bra-1239523.html"
-	},
-	{
-		"id": "c5a4da90-2d5d-4edd-a1df-47af844da9fd",
-		"brand_name": "SALTY CRUSH",
-		"gender": "female",
-		"image_alt_text": "alt_image_name",
-		"image_url": "https://c.cfjump.com/Products/57071/136361272.jpg",
-		"name": "Vikki Mini Dress Rust",
-		"offer_price": 65,
-		"retail_price": 65,
-		"url": "https://saltycrush.myshopify.com/products/vikki-mini-dress-rust"
-	},
-	{
-		"id": "c7debc62-f02d-4646-8fcf-a9f37e1f4969",
-		"brand_name": "Milky",
-		"gender": "female",
-		"image_alt_text": "Wildflower-Pyjamas---Kids-7854511-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Wildflower-Pyjamas---Kids-7854511-1.jpg",
-		"name": "Wildflower Pyjamas  Kids Two-piece sets..",
-		"offer_price": 19,
-		"retail_price": 19,
-		"url": "https://www.theiconic.com.au/wildflower-pyjamas-kids-1154587.html"
-	},
-	{
-		"id": "c9bde43f-685b-4913-93e7-3897469337db",
-		"brand_name": "Lost in Lunar ",
-		"gender": "female",
-		"image_alt_text": "Georgie-Pants-0028911-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Georgie-Pants-0028911-1.jpg",
-		"name": "Georgie Pants Pants Black Georgie Pants",
-		"offer_price": 65,
-		"retail_price": 65,
-		"url": "https://www.theiconic.com.au/georgie-pants-1198200.html"
-	},
-	{
-		"id": "d88a029b-87a5-4604-a21e-0b9a2adfb504",
-		"brand_name": "Atmos&Here Curvy",
-		"gender": "female",
-		"image_alt_text": "Rory-Rib-Knitted-Top-9346721-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Rory-Rib-Knitted-Top-9346721-1.jpg",
-		"name": "Rory Rib Knitted Top Tops Black Rory Rib..",
-		"offer_price": 30,
-		"retail_price": 30,
-		"url": "https://www.theiconic.com.au/rory-rib-knitted-top-1276439.html"
-	},
-	{
-		"id": "f8e1ae46-2563-4bcf-948b-3ad9ca20b7ac",
-		"brand_name": "Free by Cotton On",
-		"gender": "female",
-		"image_alt_text": "Sal-Crew-Neck---Teens-4716721-1.jpg",
-		"image_url": "http://static.theiconic.com.au/p/Sal-Crew-Neck---Teens-4716721-1.jpg",
-		"name": "Sal Crew Neck  Teens Sweats Phantom Sal..",
-		"offer_price": 24,
-		"retail_price": 24,
-		"url": "https://www.theiconic.com.au/sal-crew-neck-teens-1276174.html"
-	},
-	{
-		"id": "fdefbb9f-c2d4-4c6a-b26b-ddcdfb085f49",
-		"brand_name": "SALTY CRUSH",
-		"gender": "female",
-		"image_alt_text": "alt_image_name",
-		"image_url": "https://c.cfjump.com/Products/57071/137413150.jpg",
-		"name": "Ophelia Cardigan",
-		"offer_price": 69,
-		"retail_price": 69,
-		"url": "https://saltycrush.myshopify.com/products/ophelia-cardigan"
-	}
-]
+{
+  "user_id": "1f677374-6561-4897-9ca9-2ae8492832f8",
+  "base_product": {
+    "id": "587",
+    "brand_name": "Anekka Scarth",
+    "url": "https://gohock.com.au/en/listings/587",
+    "image_url": "https://hookitup.s3-ap-southeast-2.amazonaws.com/images/listing_images/images/2669/medium/d52e7c39-4206-4f34-9124-95a423e474b7.jpeg",
+    "image_alt_text": "d52e7c39-4206-4f34-9124-95a423e474b7.jpeg",
+    "name": "Ikea Bunk Beds with Mattresses and Protectors",
+    "offer_price": 250,
+    "retail_price": 250
+  },
+  "alternatives": [
+    {
+      "id": "656",
+      "brand_name": "Lauren Star",
+      "url": "https://gohock.com.au/en/listings/656",
+      "image_url": "https://hookitup.s3-ap-southeast-2.amazonaws.com/images/listing_images/images/2881/medium/screen_shot_2021-06-06_at_4_47_06_pm.png",
+      "image_alt_text": "screen_shot_2021-06-06_at_4_47_06_pm.png",
+      "name": "Bedroom Set, Queen Bed, 2 Wooden Bedside Drawers ",
+      "offer_price": 600,
+      "retail_price": 600
+    },
+    {
+      "id": "579",
+      "brand_name": "Valentina  Garcia ",
+      "url": "https://gohock.com.au/en/listings/579",
+      "image_url": "https://hookitup.s3-ap-southeast-2.amazonaws.com/images/listing_images/images/2639/medium/whatsapp_image_2021-05-09_at_13_26_05.jpeg",
+      "image_alt_text": "whatsapp_image_2021-05-09_at_13_26_05.jpeg",
+      "name": "Single bed with Mattress ",
+      "offer_price": 60,
+      "retail_price": 60
+    },
+    {
+      "id": "578",
+      "brand_name": "RuiRui Liao",
+      "url": "https://gohock.com.au/en/listings/578",
+      "image_url": "https://hookitup.s3-ap-southeast-2.amazonaws.com/images/listing_images/images/2633/medium/7a64acb3-c555-4914-92a0-9deaaeaf4000.jpeg",
+      "image_alt_text": "7a64acb3-c555-4914-92a0-9deaaeaf4000.jpeg",
+      "name": "Almost new queen size bed ➕ mattress",
+      "offer_price": 260,
+      "retail_price": 260
+    },
+    {
+      "id": "590",
+      "brand_name": "Adam L",
+      "url": "https://gohock.com.au/en/listings/590",
+      "image_url": "https://hookitup.s3-ap-southeast-2.amazonaws.com/images/listing_images/images/2678/medium/screen_shot_2021-05-17_at_4_17_09_pm.png",
+      "image_alt_text": "screen_shot_2021-05-17_at_4_17_09_pm.png",
+      "name": "Eccosa King size mattress and timber bed frame",
+      "offer_price": 500,
+      "retail_price": 500
+    },
+    {
+      "id": "635",
+      "brand_name": "Tim Nicholas",
+      "url": "https://gohock.com.au/en/listings/635",
+      "image_url": "https://hookitup.s3-ap-southeast-2.amazonaws.com/images/listing_images/images/2810/medium/1a.jpg",
+      "image_alt_text": "1a.jpg",
+      "name": "test",
+      "offer_price": 1,
+      "retail_price": 1
+    }
+  ]
+}
