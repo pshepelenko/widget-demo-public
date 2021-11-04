@@ -76,8 +76,6 @@ const AlternativeDiscovery: FC<IProps> = props => {
     dispatch({ type: 'CHANGE_TAB', payload: newTab })
   }
 
-  console.log('Rendering Module', productId)
-
   return (
     <section id="splashup-discovery-module">
       <div className="fixed top-0 left-0 z-10 flex w-full h-full">
