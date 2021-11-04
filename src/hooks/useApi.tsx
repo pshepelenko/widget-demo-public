@@ -31,8 +31,6 @@ const useApi = (url: string): void => {
 
     if (url) fetchData(url)
   }, [url])
-
-  console.log('Rendering useApi', url)
 }
 
 export default useApi
