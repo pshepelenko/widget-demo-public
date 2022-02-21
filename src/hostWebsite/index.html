@@ -18,12 +18,15 @@ It also comes with a Discovery Module Loader which is a script that load the ind
     <noscript>You need to enable JavaScript to run this app.</noscript>
 
     <div style="display:flex;justify-content: space-between;">
-      <div style="position:relative;margin:2rem;width:200;height:250">
+      <div style="position:relative;left:200px;margin:2rem;width:200;height:250">
         <img width="200" src="http://static.theiconic.com.au/p/Sonoran-Overheaad-2280811-1.jpg" />
         <%= require('html-loader!./alternativeButton.html').default %>
       </div>
+      <div id="app"> 
+        <%= require('html-loader!./widgetButton.html').default %>
+      </div>
     </div>
-
+    
     <%= require('html-loader!./discoveryModuleLoader.html').default %>
   </body>
 </html>

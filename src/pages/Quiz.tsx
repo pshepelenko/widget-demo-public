@@ -10,57 +10,51 @@ import SearchField from '../components/SearchField'
 import { GlobalProviderState } from '../contexts/GlobalProvider'
 
 // Images
-import logo from '../_images/logo-gohock.png'
+import logo from '../_images/speedo_logo.png'
 
-const MainFilteringSection: FC<IProps> = props => {
+const Quiz: FC<IProps> = props => {
   // Contexts
-  const { search, searchFieldError, tags, tagsSelected } = useContext(GlobalProviderState)
+  const { search, searchFieldError, tags, tagsSelected, scenario, activeFilters } = useContext(GlobalProviderState)
 
   // Props
-  const { closeModule, handleTagClick, handleSearchChange, handleSearchSubmit } = props
+  const { closeModule, handleFilterOptionClick } = props
 
   return (
     <div className="px-2 bg-gray-100 drop-shadow-xl">
-      {/* Logo and close button */}
-      <div className="flex items-center justify-between">
-        <img src={logo} width="100" alt="client-logo" />
-        <CloseButton onClick={closeModule}></CloseButton>
+      {/* Questions */}
+      <div className="flex flex-col flex-wrap justify-center">
+        {
+          Object.keys(activeFilters).map( (activeFilter) => (
+            <div key={activeFilter}>
+              <div className="mb-2 mt-4 font-semibold"> {scenario[activeFilter].question} </div>
+              <div>
+              { 
+                Object.keys(scenario[activeFilter].options).map(option =>(
+                  <Button
+                    key={option}
+                    inverted={!activeFilters[activeFilter].activeOptions.includes(option)}
+                    onClick={() => handleFilterOptionClick({option: option, filter: activeFilter, children: scenario[activeFilter].options[option].children})}
+                    style={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
+                  >
+                  {scenario[activeFilter].options[option].label}
+                  </Button>
+                ))
+              } 
+              </div>
+            </div>            
+          ))       
+        }
       </div>
 
-      {/* Tags */}
-      <div className="flex flex-wrap justify-center my-2 ">
-        {tags.map(tag => (
-          <Button
-            key={tag}
-            inverted={!tagsSelected.includes(tag)}
-            onClick={() => handleTagClick(tag)}
-            style={{ marginRight: '0.5rem', marginBottom: '0.5rem' }}
-          >
-            {tag}
-          </Button>
-        ))}
-      </div>
-
-      {/* Search field */}
-      <div className="mx-4 mt-2 mb-4">
-        {/* autoComplete="off" prevents browser to display suggestions */}
-        <form className="relative" autoComplete="off" onSubmit={handleSearchSubmit}>
-          <p className="text-sm text-center">Or try us out, we&apos;ll do our best</p>
-          <SearchField name="search" value={search} maxLength={25} onChange={handleSearchChange}></SearchField>
-          <div className="absolute -bottom-4">
-            {searchFieldError && <FormErrorMessage message={searchFieldError} />}
-          </div>
-        </form>
-      </div>
+      
     </div>
   )
 }
 
 interface IProps {
   closeModule: () => void
-  handleTagClick: (arg: string) => void
-  handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void
-  handleSearchSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  handleFilterOptionClick: (arg: any) => void
+  
 }
 
-export default MainFilteringSection
+export default Quiz

@@ -21,12 +21,12 @@ module.exports = {
 
         // GoHock style guide
         secondary: {
-          DEFAULT: '#5cceff', // secondary
+          DEFAULT: '#5E1CCF', // secondary
           lightest: '#F6F4FF'
         },
 
         pink: {
-          DEFAULT: '#F784AD'
+          DEFAULT: '#E2DAEF'
         },
         black: {
           DEFAULT: '#212429'

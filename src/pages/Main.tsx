@@ -1,9 +1,12 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useState, useEffect } from 'react'
 
 // Components
-import MainFilteringSection from './MainFilteringSection'
-import MainResultsSection from './MainResultsSection'
+import Quiz from './Quiz'
+import MainResultsList from './MainResultsList'
 import { MainOverlay } from './MainOverlay'
+import MainHeader from './MainHeader'
+import Footer from '../components/Footer'
+import FacebookLoginButton from '../components/FacebookLogin'
 
 // Hooks
 import useApi from '../hooks/useApi'
@@ -20,45 +23,30 @@ const apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
 
 const AlternativeDiscovery: FC<IProps> = props => {
   // Context
-  const { search, tags, tagsSelected } = useContext(GlobalProviderState)
+  const { tagsSelected } = useContext(GlobalProviderState)
   const dispatch = useContext(GlobalProviderDispatch)
 
   // Props
-  const { productId, closeModule } = props
+  const { productId, userId, closeModule } = props
 
   // Fetch
   useApi(
-    `${alternativeEndPointUrl}?apiKey=${apiKey}&id=${productId}${
+    `${alternativeEndPointUrl}?apiKey=${apiKey}&userid=&${userId}id=${productId}${
       tagsSelected.length > 0 ? `&tags=${tagsSelected.join(',')}` : ''
     }`
   )
 
-  const handleTagClick = (tagClicked: string) => {
-    dispatch({ type: 'SELECT_TAG', payload: tagClicked })
-    event('click_tag', tagClicked)
-    logEvent('click_tag', { value: tagClicked })
+  
+
+
+  const handleFilterOptionClick = (optionClicked: any) => {
+    dispatch({ type: 'SELECT_FILTER_OPTION', payload: optionClicked })
+    console.log(optionClicked);
+    event('click_tag', optionClicked)
+    logEvent('click_tag', { value: optionClicked })
   }
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: 'UPDATE_SEARCH', payload: e.target.value })
-  }
-
-  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    if (!search) {
-      return dispatch({ type: 'SEARCH_ERROR', payload: 'Type your search in the field above' })
-    }
-
-    if (tags.includes(search)) {
-      return dispatch({ type: 'SEARCH_ERROR', payload: 'This search is already active' })
-    }
-
-    dispatch({ type: 'SUBMIT_NEW_SEARCH', payload: search })
-    event('submit_semantic_search', search)
-    logEvent('submit_semantic_search', { value: search })
-  }
-
+ 
   const handleAlternativeClick = (id: string) => {
     dispatch({ type: 'SELECT_PRODUCT', payload: id })
     event('click_alternative', id)
@@ -66,35 +54,46 @@ const AlternativeDiscovery: FC<IProps> = props => {
   }
 
   const handleProductClick = async (product: IProduct) => {
+    dispatch({ type: 'SELECT_PRODUCT', payload: product.id })
     event('click_view_product', product.id)
     // Here we wait till we log the event because of the window.open() coming next
     await logEvent('click_view_product', { value: product.id })
-    window.open(product.url, '_self')
+    //window.open(product.url, '_self')
   }
 
-  const changeTab = (newTab: number) => {
-    dispatch({ type: 'CHANGE_TAB', payload: newTab })
-  }
+  const [isMobile, setIsMobile] = useState(window.matchMedia("(min-width: 768px)").matches);
+  useEffect(() => { 
+    const handler = (e: { matches: React.SetStateAction<boolean> }) => setIsMobile(e.matches);
+    window.matchMedia("(min-width: 768px)").addEventListener('change', handler);
+   }, [])
 
   return (
     <section id="splashup-discovery-module">
-      <div className="fixed top-0 left-0 z-10 flex w-full h-full">
-        <div className="bg-white " style={{ width: '330px' }}>
-          <div className="flex flex-col h-full">
-            <MainFilteringSection
+      <div className="fixed top-0 md:top-10  left-0 md:left-20 z-10 flex w-full" >
+        <div className="bg-gray-100 w-full md:w-1/4"  >
+          <div className="flex flex-col" >
+            <MainHeader
               closeModule={closeModule}
-              handleTagClick={handleTagClick}
-              handleSearchChange={handleSearchChange}
-              handleSearchSubmit={handleSearchSubmit}
+              
             />
-            <MainResultsSection
-              changeTab={changeTab}
-              handleAlternativeClick={handleAlternativeClick}
-              handleProductClick={handleProductClick}
-            />
+            <div className="overflow-y-auto overscroll-contain" style={isMobile ? {height: '500px'} : {height: '700px'} } >
+              <Quiz
+              closeModule={closeModule}
+              handleFilterOptionClick={handleFilterOptionClick}
+             
+              />
+              <FacebookLoginButton />
+              <MainResultsList
+              
+                handleAlternativeClick={handleAlternativeClick}
+                handleProductClick={handleProductClick}
+              />
+            </div>
+            <Footer />
           </div>
+          
         </div>
-        <MainOverlay closeModule={closeModule} />
+        
       </div>
     </section>
   )
@@ -102,6 +101,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
 
 interface IProps {
   productId: string
+  userId: string
   closeModule: () => void
 }
 

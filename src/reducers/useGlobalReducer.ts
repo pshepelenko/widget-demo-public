@@ -25,35 +25,56 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
       return { ...state, productSelected: productSelected, history: newHistory }
     }
 
-    case 'UPDATE_SEARCH': {
-      return { ...state, search: action.payload, searchFieldError: null }
+    case 'SELECT_FILTER_OPTION': {
+      const currentActiveFilters = state.activeFilters
+      const optionSelected = action.payload
+      let flag = state.executionFlag
+      flag++
+      console.log(flag)
+      
+      let newActiveFilters = currentActiveFilters;
+      if (1) {
+        
+        if (newActiveFilters[optionSelected.filter].activeOptions.includes(optionSelected.option))
+        {
+          newActiveFilters[optionSelected.filter].activeOptions = newActiveFilters[optionSelected.filter].activeOptions.filter((option : any) => option !== optionSelected.option)
+          console.log('deactivate ' + optionSelected.option)
+          optionSelected.children.map( (child : any) =>
+            {
+              newActiveFilters[child].parentsCount--
+              if (newActiveFilters[child].parentsCount === 0)
+              {
+                delete newActiveFilters[child]
+              }
+
+            }
+          )
+        }
+        else {
+          newActiveFilters[optionSelected.filter].activeOptions = [...newActiveFilters[optionSelected.filter].activeOptions, optionSelected.option]
+          console.log('activate ' + newActiveFilters[optionSelected.filter].activeOptions )
+          optionSelected.children.map( (child : any) =>
+            {
+              if (Object.keys(newActiveFilters).includes(child))
+              {
+                newActiveFilters[child].parentsCount++
+              }
+              else {
+                newActiveFilters[child] = {}
+                newActiveFilters[child].activeOptions = []
+                newActiveFilters[child].parentsCount = 1
+              }  
+              
+            }
+          )
+        }      
+        console.log(newActiveFilters)
+      } 
+      localStorage.setItem('state', JSON.stringify({ ...state, activeFilters: newActiveFilters, executionFlag: flag })); 
+      return { ...state, activeFilters: newActiveFilters, executionFlag: flag }
     }
 
-    case 'SUBMIT_NEW_SEARCH': {
-      const newTags = [...state.tags, action.payload]
-      const newTagsSelected = [...state.tagsSelected, action.payload]
-
-      return { ...state, search: '', tags: newTags, tagsSelected: newTagsSelected }
-    }
-
-    case 'SEARCH_ERROR': {
-      return { ...state, searchFieldError: action.payload }
-    }
-
-    case 'SELECT_TAG': {
-      const currentTagsSelectedArr = state.tagsSelected
-      const tagSelected = action.payload
-
-      const newTagsSelectedArr = currentTagsSelectedArr.includes(tagSelected)
-        ? currentTagsSelectedArr.filter(tag => tag !== tagSelected)
-        : [...currentTagsSelectedArr, tagSelected]
-
-      return { ...state, tagsSelected: newTagsSelectedArr }
-    }
-
-    case 'CHANGE_TAB': {
-      return { ...state, tabSelected: action.payload }
-    }
+    
 
     default: {
       throw new Error(`Unhandled action type: ${action.type}`)
@@ -67,11 +88,8 @@ export interface IAction {
     | 'PRODUCTS_FETCH_SUCCESS'
     | 'PRODUCTS_FETCH_ERROR'
     | 'SELECT_PRODUCT'
-    | 'UPDATE_SEARCH'
-    | 'SUBMIT_NEW_SEARCH'
-    | 'SEARCH_ERROR'
-    | 'SELECT_TAG'
-    | 'CHANGE_TAB'
+    | 'SELECT_FILTER_OPTION'
+    
   payload?: any
 }
 

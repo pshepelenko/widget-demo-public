@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GlobalProvider } from './contexts/GlobalProvider'
 import AlternativeDiscovery from './pages/Main'
+import { v4 as uuidv4 } from 'uuid';
 
 // For development only
 // const testProductIdSplashUp = '849791fa-f626-4ee2-9e2c-9052097847fa'
@@ -38,10 +39,29 @@ const App = (): JSX.Element | null => {
   if (!productId) return null
 
   console.log('Rendering App', productId)
+  //User identification
+  let userId: string = ''
+
+  const splashupCookie = document.cookie?.split('; ')?.find(row => row.startsWith('splpId='))?.split('=')[1];
+  if (!localStorage.getItem('splpId') && !splashupCookie) {
+    console.log('New user');
+    userId = uuidv4();
+    localStorage.setItem('splpId', userId)
+    document.cookie = "splpId=" + userId +"; max-age=315360000"
+  } else {
+    if (!localStorage.getItem('splpId') && splashupCookie) {
+      localStorage.setItem('splpId', splashupCookie)
+      userId = splashupCookie       
+    } 
+    if (localStorage.getItem('splpId') && !splashupCookie) {
+      document.cookie = "splpId=" + localStorage.getItem('splpId')+"; max-age=315360000"
+      userId = localStorage.getItem('splpId')!
+    }
+  }
 
   return (
     <GlobalProvider>
-      <AlternativeDiscovery productId={productId} closeModule={closeModule}></AlternativeDiscovery>
+      <AlternativeDiscovery productId={productId} userId={userId} closeModule={closeModule}></AlternativeDiscovery>
     </GlobalProvider>
   )
 }
