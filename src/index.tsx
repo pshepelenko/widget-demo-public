@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 
-// Create React anchor element
+// Create React anchor element 
 const rootID = 'splashup-root'
 const rootDiv = document.createElement('div')
 rootDiv.id = rootID
