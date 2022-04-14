@@ -7,6 +7,7 @@ import { MainOverlay } from './MainOverlay'
 import MainHeader from './MainHeader'
 import Footer from '../components/Footer'
 import FacebookLoginButton from '../components/FacebookLogin'
+import Button from '../components/Button'
 
 // Hooks
 import useApi from '../hooks/useApi'
@@ -77,6 +78,9 @@ const AlternativeDiscovery: FC<IProps> = props => {
               
             />
             <div className="overflow-y-auto overscroll-contain" style={isMobile ? {height: '500px'} : {height: '700px'} } >
+              <div className="w-full grid place-items-center">
+                <button className="p-2 text-xs font-medium border rounded shadow-sm focus:none text-secondary border-secondary  hover:border-opacity-100">EXPORT SHORTLIST</button>
+              </div>
               <Quiz
               closeModule={closeModule}
               handleFilterOptionClick={handleFilterOptionClick}

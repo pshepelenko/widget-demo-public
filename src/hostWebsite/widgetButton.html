@@ -2,7 +2,7 @@
     const App = function _App() {
  if (_App.state.count)
  return `
-   <button id="su-widget-button" onclick="() => App.state.count = !App.state.count;event.stopPropagation();this.dispatchEvent(new Event('su-open-discovery-module',{bubbles:false}))">
+   <button id="su-widget-button" data-product-id="587" onclick="() => App.state.count = !App.state.count;event.stopPropagation();this.dispatchEvent(new Event('su-open-discovery-module',{bubbles:false}))">
         <svg width="48" height="45" viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg">
             <ellipse cx="24" cy="22.5" rx="24" ry="22.5" fill="white"/>
             <path d="M47.5 22.5C47.5 34.6204 37.0096 44.5 24 44.5C10.9904 44.5 0.5 34.6204 0.5 22.5C0.5 10.3796 10.9904 0.5 24 0.5C37.0096 0.5 47.5 10.3796 47.5 22.5Z" stroke="#7C3AED" stroke-opacity="0.5"/>
