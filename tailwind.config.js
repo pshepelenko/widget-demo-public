@@ -21,8 +21,8 @@ module.exports = {
 
         // GoHock style guide
         secondary: {
-          DEFAULT: '#5E1CCF', // secondary
-          lightest: '#F6F4FF'
+          DEFAULT: '#000000', // secondary
+          lightest: '#222222'
         },
 
         pink: {
@@ -34,7 +34,7 @@ module.exports = {
         gray: {
           darkest: '#212429',
           dark: '#495057',
-          DEFAULT: '#ACB5BD',
+          DEFAULT: '#ECEBEB',
           light: '#DDE2E5',
           lightest: '#F8F9FA'
         }
@@ -66,5 +66,5 @@ module.exports = {
   corePlugins: {
     preflight: true // enable reset/normalize style to be added at build time
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [require('@tailwindcss/typography'),require("daisyui")]
 }

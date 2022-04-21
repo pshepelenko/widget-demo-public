@@ -5,7 +5,7 @@ import ProductCarouselCard from './ProductCarouselCard'
 import ProductCarouselArrow from './ProductCarouselArrow'
 
 const ProductCarousel: FC<IProps> = ({ alternatives, handleAlternativeClick }): JSX.Element => {
-  const nbOfPage = 4
+  const nbOfPage = 1
 
   const carouselPages = alternatives.reduce((acc: any, product, index) => {
     const page = Math.floor(index / nbOfPage)
@@ -18,7 +18,7 @@ const ProductCarousel: FC<IProps> = ({ alternatives, handleAlternativeClick }): 
   }, [])
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <Carousel
         useArrowKeys
         show={1}

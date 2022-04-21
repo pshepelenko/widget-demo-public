@@ -14,7 +14,7 @@ const App = (): JSX.Element | null => {
   const openDiscoveryModule = (e: any) => {
     console.log('Event emitted')
 
-    const productId = e.target.getAttribute('data-product-id')
+    const productId = '12345'//e.target.getAttribute('data-product-id')
 
     setProductId(productId)
   }
@@ -37,11 +37,12 @@ const App = (): JSX.Element | null => {
   }
 
   if (!productId) return null
-
+  
   console.log('Rendering App', productId)
   //User identification
   let userId: string = ''
-
+  //const products = localStorage.getItem('shortlistedItems') 
+  const products = ['aaa', 'bbb']
   const splashupCookie = document.cookie?.split('; ')?.find(row => row.startsWith('splpId='))?.split('=')[1];
   if (!localStorage.getItem('splpId') && !splashupCookie) {
     console.log('New user');
@@ -61,7 +62,7 @@ const App = (): JSX.Element | null => {
 
   return (
     <GlobalProvider>
-      <AlternativeDiscovery productId={productId} userId={userId} closeModule={closeModule}></AlternativeDiscovery>
+      <AlternativeDiscovery shortlisteditems={products} userId={userId} closeModule={closeModule}></AlternativeDiscovery>
     </GlobalProvider>
   )
 }

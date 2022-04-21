@@ -85,12 +85,10 @@ export const GlobalProvider = ({ children }: { children: JSX.Element }): JSX.Ele
 
 export interface IProduct {
   brand_name: string
-  gender: string
   id: string
-  image_alt_text: string
-  image_url: string
+  image_urls: Array <string>
   name: string
-  offer_price: number
+  //offer_price: number
   retail_price: number
   url: string
 }

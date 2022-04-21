@@ -2,7 +2,7 @@ name: Build and S3 Deploy
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
         uses: reggionick/s3-deploy@v3
         with:
           folder: dist
-          bucket: splashup-discovery-module/gohock
+          bucket: splashup-frontend
           bucket-region: ap-southeast-2
           dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
           invalidation: /*

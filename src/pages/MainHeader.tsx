@@ -12,10 +12,11 @@ const MainHeader: FC<IProps> = props => {
   const { closeModule } = props
 
   return (
-    <div className="bg-gray-100">
+    <div>
       {/* Logo and close button */}
-      <div className="px-2 flex items-center justify-between">
-        <img src={logo} width="100" alt="client-logo" />
+      <div className="px-3 bg-gray h-10 flex items-center justify-between">
+        <div/>
+        <div> YOUR POCKET </div>
         <CloseButton onClick={closeModule}></CloseButton>
       </div>
  

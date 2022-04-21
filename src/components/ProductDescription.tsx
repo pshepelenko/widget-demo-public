@@ -6,7 +6,7 @@ import locationIcon from '../_images/location-icon.png'
 import { IProduct } from '../contexts/GlobalProvider'
 
 const ProductDescription: FC<IProps> = ({ product, handleProductClick }): JSX.Element => {
-  const { name, image_url, retail_price, brand_name } = product
+  const { name, image_urls, retail_price, brand_name } = product
 
   const shortProductName = name.length > 20 ? `${name.substr(0, 20)}...` : name
 
@@ -15,7 +15,7 @@ const ProductDescription: FC<IProps> = ({ product, handleProductClick }): JSX.El
       <div
         className="relative h-36 "
         style={{
-          backgroundImage: `url(${image_url}`,
+          backgroundImage: `url(${image_urls[0]}`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
