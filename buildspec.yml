@@ -11,3 +11,5 @@ artifacts:
   files:
     - index.js
     - index.css
+  discard-paths: no
+  base-directory: dist
