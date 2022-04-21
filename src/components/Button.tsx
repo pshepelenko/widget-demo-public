@@ -2,7 +2,8 @@ import React, { FC, HTMLAttributes } from 'react'
 
 const Button: FC<IProps> = ({ children, size, inverted = false, ...rest }) => (
   <button
-    className={`p-2 text-xs font-medium border rounded shadow-sm focus:none mb-2 ${
+    style={{width: '70px', height: '70px'}}
+    className={`p-1 text-xs font-medium border rounded shadow-sm focus:none mb-3 grid place-items-center ${
       inverted
         ? 'text-secondary  border-secondary  hover:border-opacity-100'
         : 'text-secondary bg-white border-secondary hover:bg-secondary '
