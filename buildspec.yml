@@ -1,18 +1,13 @@
-vesrion: 0.1
+version: 0.1
 
 phases:
-  pre_build:
+  install:
     commands:
-      - yarn
-    
+      - npm install
   build:
     commands:
-      - yarn build
-
-
+      - npm run build
 artifacts:
   files:
     - index.js
     - index.css
-  discard-paths: no
-  base-directory: dist
