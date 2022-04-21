@@ -3,7 +3,7 @@ vesrion: 0.1
 phases:
   pre_build:
     commands:
-      - npm ci
+      - npm install
     
   build:
     commands:
@@ -14,4 +14,3 @@ artifacts:
     - '**/*'
     discard-paths: no
     base-directory: dist
-    
