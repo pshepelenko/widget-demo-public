@@ -70,8 +70,8 @@ const AlternativeDiscovery: FC<IProps> = props => {
 
   return (
     <section id="splashup-discovery-module">
-      <div className="fixed top-15 md:top-10 left-0 md:left-20 z-10 flex w-full" >
-        <div className="bg-gray-100"  style={isMobile ? {height: '500px'} : {height: '700px'} }  >
+      <div className="fixed top-15 md:top-10 left-0 md:left-20 z-10 flex w-full" style={isMobile ? {height: '500px'} : {height: '700px'} }>
+        <div className="bg-gray-100"    >
           <div className="flex flex-col bg-gray-100" style={{width: '390px'}}>
             <MainHeader
               closeModule={closeModule}              
