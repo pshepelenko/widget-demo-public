@@ -71,12 +71,12 @@ const AlternativeDiscovery: FC<IProps> = props => {
   return (
     <section id="splashup-discovery-module">
       <div className="fixed top-15 md:top-10 left-0 md:left-20 z-10 flex w-full" >
-        <div className="bg-gray-100" style={{width: '390px'}}   >
-          <div className="flex flex-col" >
+        <div className="bg-gray-100"  style={isMobile ? {height: '500px'} : {height: '700px'} }  >
+          <div className="flex flex-col bg-gray-100" style={{width: '390px'}}>
             <MainHeader
               closeModule={closeModule}              
             />
-            <div className="overflow-y-auto overscroll-contain" style={isMobile ? {height: '500px'} : {height: '700px'} } >
+            <div className="overflow-y-auto overscroll-contain"  >
               <div className="w-full flex justify-center items-center mt-5 mb-5">
                 <button className="w-10/12 p-2  flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"> 
                   <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">

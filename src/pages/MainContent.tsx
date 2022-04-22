@@ -51,18 +51,18 @@ const MainContent: FC<IProps> = props => {
         </Button>
         
       </div>
-      <div className="w-3/5 h-full ml-3 mr-3">
+      <div className="w-3/5 h-full ml-2 mr-2">
         <ProductCarousel alternatives={shortlistedItems}  handleAlternativeClick={handleFilterOptionClick}/>
         <div>
-          <div>This is a product description line 1</div>
-          <div>This is a product description line 2</div>
-          <div>This is a product description line 3</div>
-          <div>This is a product description line 4</div>
+          <div>product description line 1</div>
+          <div>product description line 2</div>
+          <div>product description line 3</div>
+          <div>product description line 4</div>
         </div>
       </div>
       {//<ProductList />
       }
-      <div className="h-80 carousel carousel-vertical ">
+      <div className="h-80 carousel carousel-vertical mr-2 ">
         <div className="carousel-item h-1/4 mb-2">
           <img src="https://api.lorem.space/image/game?w=256&h=400&hash=8B7BCDC2" />
         </div> 
