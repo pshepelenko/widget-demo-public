@@ -75,7 +75,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
 
   return (
     <section id="splashup-discovery-module">
-      <div className="fixed top-15 md:top-10 left-0 md:left-20 z-10 flex w-full font-sans overflow-y-auto overscroll-contain" style={isMobile ? {height: '680px'} : {height: '500px'} }>
+      <div className="fixed top-12 md:top-10 left-0 md:left-20 z-10 flex w-full font-sans overflow-y-auto overscroll-contain" style={isMobile ? {height: '680px'} : {height: '680px'} }>
         <div className="bg-gray-100"    >
           <div className="flex flex-col bg-gray-100 " style={{width: '390px'}}>
             <MainHeader
@@ -139,7 +139,15 @@ const AlternativeDiscovery: FC<IProps> = props => {
             }
             {
               exportPage &&
-              <ExportPage />
+              <div className='flex flex-col items-center'> 
+                <ExportPage /> 
+                <button 
+                  className="p-2 mt-40 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none border-secondary  hover:border-opacity-100"
+                  onClick={() => {setExportpage(false)}}
+                > 
+                  EDIT SHORTLIST
+                </button>
+              </div>  
             }
             
           </div>

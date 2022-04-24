@@ -26,7 +26,7 @@ const MainContent: FC<IProps> = props => {
   shortlistedItems = [{ brand_name: 'Ksubi', id: 'aaa', image_urls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retail_price: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', image_urls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retail_price: 80, url: ''} ]
   
   return (
-    <div className="relative top-15 flex px-9 flex-col items-center">
+    <div className="mt-24 flex px-9 flex-col items-center">
        
       <div className="flex flex-col items-center justify-center  mb-3 text-center">
         <p>This is a link to your shortlist</p>
@@ -34,7 +34,7 @@ const MainContent: FC<IProps> = props => {
       </div>
                 
       
-      <div  className="flex flex-row bg-gray items-center justify-center px-3 my-4">
+      <div  className="flex flex-row bg-gray items-center justify-between px-5 my-4 w-full">
         <div className="text-gray-600"> 
           http://speedo.com/?shortlistid=1..
         </div>
@@ -46,16 +46,14 @@ const MainContent: FC<IProps> = props => {
       <div>
           We can also send this shortlist to your e-mail
       </div>  
-      <div className="flex flex-row bg-gray items-center justify-center px-3 my-4 text-gray-600 w-full h-5">
+      <div className="flex flex-row bg-gray items-center justify-start px-5 mt-4 text-gray-600 w-full h-7">
         your@email.com
       </div> 
-      <button className="p-2 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-white bg-secondary border-secondary  hover:border-opacity-100"> 
+      <button className="p-2 w-40 mt-9 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-white bg-secondary border-secondary  hover:border-opacity-100"> 
         SEND SHORTLIST
       </button>
 
-      <button className="p-2 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none border-secondary  hover:border-opacity-100"> 
-        EDIT SHORTLIST
-      </button>
+     
     </div>
   )
 }
