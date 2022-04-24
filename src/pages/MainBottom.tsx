@@ -23,7 +23,7 @@ const MainContent: FC<IProps> = props => {
   shortlistedItems = [{ brand_name: 'Ksubi', id: 'aaa', image_urls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retail_price: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', image_urls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retail_price: 80, url: ''} ]
   
   return (
-    <div className='px-3'>
+    <div className='px-4'>
       The K Man Cardigan Black features a branded patch, branded buttons, back 4x4 cross embroidery, signature woven sleeve tag and Ksubi t-box print. This cardigan has a relaxed fit and made from premium mohair blend yarn.
       <div> FEATURES </div>
     </div>

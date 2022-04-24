@@ -15,8 +15,8 @@ const MainHeader: FC<IProps> = props => {
     <div>
       {/* Logo and close button */}
       <div className="px-3 bg-gray h-10 flex items-center justify-between">
-        <div/>
-        <div> YOUR POCKET </div>
+        <div style={{width: '32px'}}/>
+        <div className='font-bold'> YOUR POCKET </div>
         <CloseButton onClick={closeModule}></CloseButton>
       </div>
  
