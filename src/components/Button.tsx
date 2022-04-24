@@ -6,7 +6,7 @@ const Button: FC<IProps> = ({ children, size, inverted = false, ...rest }) => (
     className={`p-1 text-xs font-medium border rounded shadow-sm focus:none mb-3 grid place-items-center ${
       inverted
         ? 'text-secondary  border-secondary  hover:border-opacity-100'
-        : 'text-secondary bg-white border-secondary hover:bg-secondary '
+        : 'text-secondary bg-white border-secondary hover:bg-gray '
     }
     ${size === 'big' ? 'text-sm px-8' : ''}
     `}
