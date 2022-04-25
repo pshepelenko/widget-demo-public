@@ -39,11 +39,11 @@ const AlternativeDiscovery: FC<IProps> = props => {
  
   
   // Fetch
-  useApi(
+  /*useApi(
     `${splashupEndPointUrl}?apiKey=${apiKey}&userid=&${userId}${
       shortlisteditems.length > 0 ? `&items=${shortlisteditems.join(',')}` : ''
     }`
-  )
+  )*/
 
   
 
