@@ -11,9 +11,8 @@ document.body.appendChild(rootDiv)
 console.log('Root div created')
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-
+  
+    <App />,
+  
   document.getElementById(rootID)
 )

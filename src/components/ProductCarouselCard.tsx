@@ -7,7 +7,7 @@ const ProductCarouselCard: FC<IProps> = ({ product, handleAlternativeClick }): J
       <div
         className="w-full h-full border-2 rounded border-secondary flex justify-end"
         style={{
-          backgroundImage: `url(${product.image_urls[0]}`,
+          backgroundImage: `url(${product.imageUrls[0]}`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'center'

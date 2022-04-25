@@ -12,7 +12,7 @@ import { GlobalProviderDispatch, GlobalProviderState, IProduct } from '../contex
 
 
 
-const MainContent: FC<IProps> = props => {
+const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
   const dispatch = useContext(GlobalProviderDispatch)
 
   const handleFilterOptionClick = (optionClicked: any) => {
@@ -23,7 +23,7 @@ const MainContent: FC<IProps> = props => {
   }
   
   let shortlistedItems:  IProduct[] 
-  shortlistedItems = [{ brand_name: 'Ksubi', id: 'aaa', image_urls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retail_price: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', image_urls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retail_price: 80, url: ''} ]
+  shortlistedItems = [{ brand_name: 'Ksubi', id: 'aaa', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retailPrice: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retailPrice: 80, url: ''} ]
   
   return (
     <div className="flex px-4 flex flex-col">
@@ -70,27 +70,17 @@ const MainContent: FC<IProps> = props => {
         {//<ProductList />
         }
         <div className="h-80 carousel carousel-vertical ">
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395" />
-          </div> 
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://cdn.shopify.com/s/files/1/0518/6233/9773/products/DRESS_ARISE_TANK_GREY_MARLE_BLACKcopy_3ad65266-7519-490d-af81-810b2e9b0696_2000x.jpg?v=1646887091" />
-          </div> 
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://cdn.shopify.com/s/files/1/0518/6233/9773/products/TOP_ARISE_SS_TEE_CHOCOLATE_2692_dbb43b6a-1083-4175-a192-dd22c90e8267_2000x.jpg?v=1646927142" />
-          </div> 
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://cdn.shopify.com/s/files/1/0518/6233/9773/products/DRESS_ARISE_TANK_CHOCOLATE_2354_fe43a8d4-4e69-4214-8fcf-6addb9ee21b2.jpg?v=1646887058" />
-          </div> 
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://api.lorem.space/image/game?w=256&h=400&hash=9D9539E7" />
-          </div> 
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://api.lorem.space/image/game?w=256&h=400&hash=BDC01094" />
-          </div> 
-          <div className="carousel-item h-1/4 mb-2">
-            <img src="https://api.lorem.space/image/game?w=256&h=400&hash=7F5AE56A" />
-          </div>
+          {
+            products.map((product: IProduct) => (
+              <div key={product.id} className="carousel-item h-1/4 mb-2">
+                  <img src={product.imageUrls[0]} />                    
+              </div>
+            ))
+            
+          }
+
+          
+          
         </div>
       </div>    
     </div>
@@ -98,7 +88,7 @@ const MainContent: FC<IProps> = props => {
 }
 
 interface IProps {
-  
+  products: IProduct[]
 }
 
 export default MainContent

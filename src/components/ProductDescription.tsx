@@ -6,7 +6,7 @@ import locationIcon from '../_images/location-icon.png'
 import { IProduct } from '../contexts/GlobalProvider'
 
 const ProductDescription: FC<IProps> = ({ product, handleProductClick }): JSX.Element => {
-  const { name, image_urls, retail_price, brand_name } = product
+  const { name, imageUrls, retailPrice, brand_name } = product
 
   const shortProductName = name.length > 20 ? `${name.substr(0, 20)}...` : name
 
@@ -15,7 +15,7 @@ const ProductDescription: FC<IProps> = ({ product, handleProductClick }): JSX.El
       <div
         className="relative h-36 "
         style={{
-          backgroundImage: `url(${image_urls[0]}`,
+          backgroundImage: `url(${imageUrls[0]}`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
@@ -23,13 +23,13 @@ const ProductDescription: FC<IProps> = ({ product, handleProductClick }): JSX.El
       >
         {/* Price */}
         <div className="absolute top-0 right-0 px-4 py-2 bg-white rounded">
-          <p className="font-bold text-black ">{`$${retail_price}`}</p>
+          <p className="font-bold text-black ">{`$${retailPrice}`}</p>
         </div>
 
         {/* Product name */}
         <div className="absolute bottom-0 left-0 px-2 py-2 bg-black rounded bg-opacity-60">
           <p className="text-sm text-white ">
-            {shortProductName} <span className="text-gray-dark">{`$${retail_price}`}</span>
+            {shortProductName} <span className="text-gray-dark">{`$${retailPrice}`}</span>
           </p>
         </div>
       </div>

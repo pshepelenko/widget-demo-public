@@ -21,17 +21,23 @@ import { event } from '../utils/googleAnalytics'
 import MainContent from './MainContent'
 import MainBottom from './MainBottom'
 import ExportPage from './ExportPage'
+import EmptyWidget from './EmptyWidget'
 
 const splashupEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
 const apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
 
 const AlternativeDiscovery: FC<IProps> = props => {
   // Context
+  const { products } = useContext(GlobalProviderState)
   const dispatch = useContext(GlobalProviderDispatch)
+  console.log('products')
+  console.log(products)
 
   // Props
   const {shortlisteditems, userId, closeModule } = props
 
+ 
+  
   // Fetch
   useApi(
     `${splashupEndPointUrl}?apiKey=${apiKey}&userid=&${userId}${
@@ -82,7 +88,9 @@ const AlternativeDiscovery: FC<IProps> = props => {
               closeModule={closeModule}              
             />
             {
-              !exportPage && 
+              (products ==undefined || products?.length == 0)? 
+              <EmptyWidget />       
+              : !exportPage && 
               <div className=""  >
                 <div className="w-full flex justify-center items-center mt-5 mb-5">
                   <button className="w-10/12 p-2  flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"> 
@@ -98,7 +106,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   </button>
                 </div>
                 
-                <MainContent />
+                <MainContent products={products!}/>
 
                 <div className="w-full flex justify-center items-center mt-5 mb-5">
                   <button className="p-2 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-white bg-secondary border-secondary  hover:border-opacity-100"> 

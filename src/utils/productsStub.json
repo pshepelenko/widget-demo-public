@@ -8,7 +8,7 @@
     "image_alt_text": "d52e7c39-4206-4f34-9124-95a423e474b7.jpeg",
     "name": "Ikea Bunk Beds with Mattresses and Protectors",
     "offer_price": 250,
-    "retail_price": 250
+    "retailPrice": 250
   },
   "alternatives": [
     {
@@ -19,7 +19,7 @@
       "image_alt_text": "screen_shot_2021-06-06_at_4_47_06_pm.png",
       "name": "Bedroom Set, Queen Bed, 2 Wooden Bedside Drawers ",
       "offer_price": 600,
-      "retail_price": 600
+      "retailPrice": 600
     },
     {
       "id": "579",
@@ -29,7 +29,7 @@
       "image_alt_text": "whatsapp_image_2021-05-09_at_13_26_05.jpeg",
       "name": "Single bed with Mattress ",
       "offer_price": 60,
-      "retail_price": 60
+      "retailPrice": 60
     },
     {
       "id": "578",
@@ -39,7 +39,7 @@
       "image_alt_text": "7a64acb3-c555-4914-92a0-9deaaeaf4000.jpeg",
       "name": "Almost new queen size bed ➕ mattress",
       "offer_price": 260,
-      "retail_price": 260
+      "retailPrice": 260
     },
     {
       "id": "590",
@@ -49,7 +49,7 @@
       "image_alt_text": "screen_shot_2021-05-17_at_4_17_09_pm.png",
       "name": "Eccosa King size mattress and timber bed frame",
       "offer_price": 500,
-      "retail_price": 500
+      "retailPrice": 500
     },
     {
       "id": "635",
@@ -59,7 +59,7 @@
       "image_alt_text": "1a.jpg",
       "name": "test",
       "offer_price": 1,
-      "retail_price": 1
+      "retailPrice": 1
     }
   ]
 }
