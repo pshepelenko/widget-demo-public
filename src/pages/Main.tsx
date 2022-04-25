@@ -23,8 +23,8 @@ import MainBottom from './MainBottom'
 import ExportPage from './ExportPage'
 import EmptyWidget from './EmptyWidget'
 
-const splashupEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
-const apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
+//const splashupEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
+//Sconst apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
 
 const AlternativeDiscovery: FC<IProps> = props => {
   // Context
