@@ -1,21 +1,14 @@
-import React, { FC } from 'react'
-import { IProduct } from '../contexts/GlobalProvider'
+import React, { FC, useContext } from 'react'
+import { GlobalProviderState, IProduct } from '../contexts/GlobalProvider'
 import { Carousel } from '@trendyol-js/react-carousel'
 import ProductCarouselCard from './ProductCarouselCard'
 import ProductCarouselArrow from './ProductCarouselArrow'
 
-const ProductCarousel: FC<IProps> = ({ alternatives, handleAlternativeClick }): JSX.Element => {
-  const nbOfPage = 1
-
-  const carouselPages = alternatives.reduce((acc: any, product, index) => {
-    const page = Math.floor(index / nbOfPage)
-
-    if (!acc[page]) acc.push([])
-
-    acc[page].push(product)
-
-    return acc
-  }, [])
+const ProductCarousel: FC<IProps> = ({ selectedProduct, handleAlternativeClick }): JSX.Element => {
+  const { productSelected } = useContext(GlobalProviderState)
+  //const state = JSON.parse(localStorage.getItem('state')!)
+  //const productSelected = state.productSelected
+  console.log(productSelected!.imageUrls)
 
   return (
     <div className="relative ">
@@ -35,15 +28,15 @@ const ProductCarousel: FC<IProps> = ({ alternatives, handleAlternativeClick }): 
           </div>
         }
       >
-        {carouselPages.map((page: IProduct[], index: number) => (
-          <div key={index} className="flex flex-row flex-wrap">
-            {page.map(product => (
+        {productSelected!.imageUrls.map((image: string) => (
+          <div key={image} className="flex flex-row flex-wrap">
+            
               <ProductCarouselCard
-                key={product.id}
-                product={product}
+                image={image}
+                product={productSelected!}
                 handleAlternativeClick={handleAlternativeClick}
               ></ProductCarouselCard>
-            ))}
+            
           </div>
         ))}
       </Carousel>
@@ -52,7 +45,7 @@ const ProductCarousel: FC<IProps> = ({ alternatives, handleAlternativeClick }): 
 }
 
 type IProps = {
-  alternatives: IProduct[]
+  selectedProduct: IProduct
   handleAlternativeClick: (arg: string) => void
 }
 

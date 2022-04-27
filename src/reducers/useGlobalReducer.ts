@@ -16,13 +16,14 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
 
     case 'SELECT_PRODUCT': {
       const productSelected = state.products!.find(product => product.id === action.payload)
-      const productAlreadyInHistory = state.history.find(product => product.id === action.payload)
+      //const productAlreadyInHistory = state.history.find(product => product.id === action.payload)
 
-      if (productAlreadyInHistory) return { ...state, productSelected: productSelected }
+      //if (productAlreadyInHistory) return { ...state, productSelected: productSelected }
 
-      const newHistory = productSelected ? [...state.history, productSelected] : [...state.history]
-
-      return { ...state, productSelected: productSelected, history: newHistory }
+      //const newHistory = productSelected ? [...state.history, productSelected] : [...state.history]
+      console.log(productSelected)
+      localStorage.setItem('state', JSON.stringify({...state, productSelected: productSelected}))
+      return { ...state, productSelected: productSelected}
     }
 
     case 'SELECT_FILTER_OPTION': {

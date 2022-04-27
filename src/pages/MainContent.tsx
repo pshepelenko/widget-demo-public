@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useContext } from 'react'
+import React, { ChangeEvent, FC, useContext, useReducer } from 'react'
 
 // Components
 import ProductCarousel from '../components/ProductCarousel'
@@ -9,11 +9,15 @@ import { event } from '../utils/googleAnalytics'
 
 // Contexts
 import { GlobalProviderDispatch, GlobalProviderState, IProduct } from '../contexts/GlobalProvider'
+import ProductCarouselCard from '../components/ProductCarouselCard'
+import ProductCarousel2 from '../components/ProductCarousel2'
 
 
 
 const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
   const dispatch = useContext(GlobalProviderDispatch)
+  const { productSelected } = useContext(GlobalProviderState)
+  
 
   const handleFilterOptionClick = (optionClicked: any) => {
     dispatch({ type: 'SELECT_FILTER_OPTION', payload: optionClicked })
@@ -27,11 +31,13 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
     console.log(optionClicked);
     event('click_tag', optionClicked)
     logEvent('click_tag', { value: optionClicked })
+    
   }
   
   let shortlistedItems:  IProduct[] 
   shortlistedItems = [{ brand_name: 'Ksubi', id: 'aaa', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retailPrice: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retailPrice: 80, url: ''} ]
   
+
   return (
     <div className="flex px-4 flex flex-col">
       {//<NotificationsColumn />
@@ -61,7 +67,10 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
           
         </div>
         <div className="w-3/5 h-full mr-2">
-          <ProductCarousel alternatives={shortlistedItems}  handleAlternativeClick={handleFilterOptionClick}/>
+          <ProductCarousel2 selectedProduct={productSelected!}  handleAlternativeClick={handleFilterOptionClick}/>
+          
+          
+              
           <div>
             <div className='font-bold'>$295</div>
             <div className='flex justify-start items-center'> 
@@ -76,15 +85,15 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
         </div>
         {//<ProductList />
         }
-        <div className="h-80 carousel carousel-vertical ">
+        <div className="h-80 w-16 carousel carousel-vertical ">
           {
             products.map((product: IProduct) => (
               <button 
                 key={product.id} 
-                className="carousel-item h-1/4 mb-2"
+                className = "carousel-item h-1/4 mb-2"
                 onClick={() => {handleVerticalCarouselClick(product.id)}}
               >
-                  <img src={product.imageUrls[0]} />                    
+                  <img className={product.id === productSelected!.id ? "border-secondary border" : "" } src={product.imageUrls[0]} />                    
               </button>
             ))
             
