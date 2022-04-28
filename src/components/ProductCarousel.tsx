@@ -34,7 +34,7 @@ const ProductCarousel: FC<IProps> = ({ selectedProduct, handleAlternativeClick }
               <ProductCarouselCard
                 image={image}
                 product={productSelected!}
-                handleAlternativeClick={handleAlternativeClick}
+                handleRemoveClick={handleAlternativeClick}
               ></ProductCarouselCard>
             
           </div>

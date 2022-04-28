@@ -32,7 +32,8 @@ const AlternativeDiscovery: FC<IProps> = props => {
   const dispatch = useContext(GlobalProviderDispatch)
   console.log('products')
   console.log(products)
-
+  const state = useContext(GlobalProviderState)
+  localStorage.setItem('state', JSON.stringify(state))
   // Props
   const {shortlisteditems, userId, closeModule } = props
 
@@ -77,6 +78,8 @@ const AlternativeDiscovery: FC<IProps> = props => {
   useEffect(() => { 
     const handler = (e: { matches: React.SetStateAction<boolean> }) => setIsMobile(e.matches);
     window.matchMedia("(min-width: 768px)").addEventListener('change', handler);
+    //writing state to a localstorage
+    
    }, [])
 
   return (

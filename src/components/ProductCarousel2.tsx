@@ -4,7 +4,7 @@ import { Carousel } from '@trendyol-js/react-carousel'
 import ProductCarouselCard from './ProductCarouselCard'
 import ProductCarouselArrow from './ProductCarouselArrow'
 
-const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleAlternativeClick }): JSX.Element => {
+const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleRemoveClick }): JSX.Element => {
   const { productSelected } = useContext(GlobalProviderState)
   //const state = JSON.parse(localStorage.getItem('state')!)
   //const productSelected = state.productSelected
@@ -20,6 +20,7 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleAlternativeClick 
     return (index + 1).toString()
   }
 
+
   return (
     <div className="relative ">
       <div className="carousel w-full">
@@ -33,7 +34,7 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleAlternativeClick 
                 <ProductCarouselCard
                   image={image}
                   product={productSelected!}
-                  handleAlternativeClick={handleAlternativeClick}
+                  handleRemoveClick={handleRemoveClick}
                 ></ProductCarouselCard>
                 <div className="absolute flex justify-between transform -translate-y-1/2 left-1 right-1 top-1/2">
                   <a href={'#' + carouselButtonIndexPrevious(index)} className="btn btn-circle">❮</a> 
@@ -41,25 +42,7 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleAlternativeClick 
                 </div>                    
             </div>
           ))
-        /*
-          () => {
-            let i = 0
-            let image: string
-            for (image of productSelected!.imageUrls) {
-              <div id={i.toString()} className="carousel-item relative w-full">
-                <ProductCarouselCard
-                image={image}
-                product={productSelected!}
-                handleAlternativeClick={handleAlternativeClick}
-                ></ProductCarouselCard>
-                <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                  <a href={'#' + (i-1).toString()} className="btn btn-circle">❮</a> 
-                  <a href={'#' + (i+1).toString()} className="btn btn-circle">❯</a>
-                </div>            
-              </div>      
-            }  
-          }
-        */}
+        }
       </div>
     </div> 
   )
@@ -67,7 +50,7 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleAlternativeClick 
 
 type IProps = {
   selectedProduct: IProduct
-  handleAlternativeClick: (arg: string) => void
+  handleRemoveClick: (arg: string) => void
 }
 
 export default ProductCarousel2

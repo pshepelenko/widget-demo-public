@@ -1,6 +1,20 @@
 import { IGlobalProvider } from '../contexts/GlobalProvider'
 
 const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
+  
+  const asyncLocalStorage = {
+    setItem: function (key:string, value:string) {
+        return Promise.resolve().then(function () {
+            localStorage.setItem(key, value);
+        });
+    },
+    getItem: function (key:string ) {
+        return Promise.resolve().then(function () {
+            return localStorage.getItem(key);
+        });
+    }
+};
+
   switch (action.type) {
     case 'START_FETCHING_PRODUCTS': {
       return { ...state, products: null, productSelected: null, error: null, isLoading: true }
@@ -21,9 +35,13 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
       //if (productAlreadyInHistory) return { ...state, productSelected: productSelected }
 
       //const newHistory = productSelected ? [...state.history, productSelected] : [...state.history]
-      console.log(productSelected)
-      localStorage.setItem('state', JSON.stringify({...state, productSelected: productSelected}))
+      
       return { ...state, productSelected: productSelected}
+    }
+
+    case 'REMOVE_ITEM': {
+      const newProducts=state.products!.filter((item)=>item.id !== action.payload)
+      return { ...state, products: newProducts, productSelected: newProducts[0]}
     }
 
     case 'SELECT_FILTER_OPTION': {
@@ -90,6 +108,7 @@ export interface IAction {
     | 'PRODUCTS_FETCH_ERROR'
     | 'SELECT_PRODUCT'
     | 'SELECT_FILTER_OPTION'
+    | 'REMOVE_ITEM'
     
   payload?: any
 }

@@ -22,7 +22,7 @@ const SetInitialState = () : any => {
       {
         brand_name: 'Ksubi',
         id: '2222',
-        imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/DRESS_ARISE_TANK_GREY_MARLE_BLACKcopy_3ad65266-7519-490d-af81-810b2e9b0696_2000x.jpg?v=1646887091', 'https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'],
+        imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/DRESS_ARISE_TANK_GREY_MARLE_BLACKcopy_3ad65266-7519-490d-af81-810b2e9b0696_2000x.jpg?v=1646887091', 'https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395','https://cdn.shopify.com/s/files/1/0518/6233/9773/products/SHORT_KALI_MUSE_887_2000x.jpg?v=1646940795'],
         name: 'top',
         retailPrice: 200,
         url: 'sadas'
@@ -44,10 +44,10 @@ const SetInitialState = () : any => {
         url: 'sadas'
       }
     ],
-    productSelected:  {
+    productSelected:   {
       brand_name: 'Ksubi',
       id: '1111',
-      imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395', 'https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'],
+      imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/TOP_PANTHEA_BODYSUIT_WASHED_BLACK_1998_c91c0a56-410b-4747-a8a6-c8a661491819.jpg?v=1646938581', 'https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'],
       name: 'top',
       retailPrice: 195,
       url: 'sadas'

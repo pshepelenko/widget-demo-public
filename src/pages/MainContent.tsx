@@ -19,11 +19,11 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
   const { productSelected } = useContext(GlobalProviderState)
   
 
-  const handleFilterOptionClick = (optionClicked: any) => {
-    dispatch({ type: 'SELECT_FILTER_OPTION', payload: optionClicked })
-    console.log(optionClicked);
-    event('click_tag', optionClicked)
-    logEvent('click_tag', { value: optionClicked })
+  const handleRemoveItemClick = (productId: string) => {
+    dispatch({ type: 'REMOVE_ITEM', payload: productId })
+    console.log(productId);
+    event('click_tag', productId)
+    logEvent('click_tag', { value: productId })
   }
 
   const handleVerticalCarouselClick = (optionClicked: any) => {
@@ -67,7 +67,7 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
           
         </div>
         <div className="w-3/5 h-full mr-2">
-          <ProductCarousel2 selectedProduct={productSelected!}  handleAlternativeClick={handleFilterOptionClick}/>
+          <ProductCarousel2 selectedProduct={productSelected!}  handleRemoveClick={handleRemoveItemClick}/>
           
           
               
