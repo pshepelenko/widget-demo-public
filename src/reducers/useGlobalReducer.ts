@@ -27,7 +27,17 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
     case 'PRODUCTS_FETCH_ERROR': {
       return { ...state, error: action.payload, isLoading: false }
     }
+    
+    case 'SET_SELECTED_PRODUCT': {
+      //console.log('changedFocus true')
+      return { ...state, productSelected: action.payload}
+    }
 
+    case 'SLIDE_CHANGED': {
+      //console.log('changedFocus false')
+      return { ...state, activeSlide: action.payload }
+    }
+    
     case 'SELECT_PRODUCT': {
       const productSelected = state.products!.find(product => product.id === action.payload)
       //const productAlreadyInHistory = state.history.find(product => product.id === action.payload)
@@ -36,7 +46,7 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
 
       //const newHistory = productSelected ? [...state.history, productSelected] : [...state.history]
       
-      return { ...state, productSelected: productSelected}
+      return { ...state, productSelected: productSelected, activeSlide: 0 }
     }
 
     case 'REMOVE_ITEM': {
@@ -109,7 +119,8 @@ export interface IAction {
     | 'SELECT_PRODUCT'
     | 'SELECT_FILTER_OPTION'
     | 'REMOVE_ITEM'
-    
+    | 'SET_SELECTED_PRODUCT'
+    | 'SLIDE_CHANGED'
   payload?: any
 }
 

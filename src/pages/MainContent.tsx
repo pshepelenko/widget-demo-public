@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useContext, useReducer } from 'react'
+import React, { ChangeEvent, FC, useContext, useReducer, useState } from 'react'
 
 // Components
 import ProductCarousel from '../components/ProductCarousel'
@@ -11,31 +11,41 @@ import { event } from '../utils/googleAnalytics'
 import { GlobalProviderDispatch, GlobalProviderState, IProduct } from '../contexts/GlobalProvider'
 import ProductCarouselCard from '../components/ProductCarouselCard'
 import ProductCarousel2 from '../components/ProductCarousel2'
+import ProductCarousel3 from '../components/ProductCarousel3'
 
 
 
 const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
+  
   const dispatch = useContext(GlobalProviderDispatch)
   const { productSelected } = useContext(GlobalProviderState)
-  
+  const [changedFocus, setFocus] = useState(false)
 
-  const handleRemoveItemClick = (productId: string) => {
+
+  let newProductSelected = productSelected;
+  if (products!== [] && productSelected === null) {
+    dispatch({ type: 'SET_SELECTED_PRODUCT', payload: products![0] })
+    newProductSelected = products[0]  
+  }  
+
+  const handleRemoveItemClick = (productId: number) => {
     dispatch({ type: 'REMOVE_ITEM', payload: productId })
     console.log(productId);
-    event('click_tag', productId)
+    event('click_tag', productId.toString())
     logEvent('click_tag', { value: productId })
   }
 
   const handleVerticalCarouselClick = (optionClicked: any) => {
     dispatch({ type: 'SELECT_PRODUCT', payload: optionClicked })
+    setFocus(true)
     console.log(optionClicked);
     event('click_tag', optionClicked)
     logEvent('click_tag', { value: optionClicked })
     
   }
   
-  let shortlistedItems:  IProduct[] 
-  shortlistedItems = [{ brand_name: 'Ksubi', id: 'aaa', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retailPrice: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retailPrice: 80, url: ''} ]
+  //let shortlistedItems:  IProduct[] 
+  //shortlistedItems = [{ brand_name: 'Ksubi', id: 123, imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/BOMBER_JACKET_BLACK_BORG_5160_d1adc06d-1f0e-48c1-9c65-14866121353b_2000x.jpg?v=1646928395'], name: 'Polo shirt', retailPrice: 80, url: ''},{ brand_name: 'Ksubi', id: 'bbb', imageUrls: ['https://cdn.shopify.com/s/files/1/0518/6233/9773/products/Womens-ECOM-ContactHigh3971_a5fb9428-0886-45a4-8be9-45392bedb2de_2000x.jpg?v=1646942334'], name: 'Polo shirt', retailPrice: 80, url: ''} ]
   
 
   return (
@@ -67,7 +77,7 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
           
         </div>
         <div className="w-3/5 h-full mr-2">
-          <ProductCarousel2 selectedProduct={productSelected!}  handleRemoveClick={handleRemoveItemClick}/>
+          <ProductCarousel3 selectedProduct={productSelected!}  handleRemoveClick={handleRemoveItemClick} changedFocus={changedFocus} />
           
           
               
@@ -89,11 +99,11 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
           {
             products.map((product: IProduct) => (
               <button 
-                key={product.id} 
+                key={product.id.toString()} 
                 className = "carousel-item h-1/4 mb-2"
                 onClick={() => {handleVerticalCarouselClick(product.id)}}
               >
-                  <img className={product.id === productSelected!.id ? "border-secondary border" : "" } src={product.imageUrls[0]} />                    
+                  <img id={product.id.toString()} className={product.id === newProductSelected!.id ? "border-secondary border" : "" } src={product.images[0]} />                    
               </button>
             ))
             

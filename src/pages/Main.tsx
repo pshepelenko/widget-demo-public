@@ -1,13 +1,7 @@
 import React, { FC, useContext, useState, useEffect } from 'react'
 
 // Components
-import Quiz from './Quiz'
-import MainResultsList from './MainResultsList'
-import { MainOverlay } from './MainOverlay'
 import MainHeader from './MainHeader'
-import Footer from '../components/Footer'
-import FacebookLoginButton from '../components/FacebookLogin'
-import Button from '../components/Button'
 
 // Hooks
 import useApi from '../hooks/useApi'
@@ -28,16 +22,16 @@ import EmptyWidget from './EmptyWidget'
 
 const AlternativeDiscovery: FC<IProps> = props => {
   // Context
-  const { products } = useContext(GlobalProviderState)
+  const { productSelected, products } = useContext(GlobalProviderState)
   const dispatch = useContext(GlobalProviderDispatch)
-  console.log('products')
-  console.log(products)
+  console.log('productSelected')
+  console.log(productSelected)
   const state = useContext(GlobalProviderState)
   localStorage.setItem('state', JSON.stringify(state))
   // Props
   const {shortlisteditems, userId, closeModule } = props
-
- 
+  
+  
   
   // Fetch
   /*useApi(
@@ -65,7 +59,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
 
   const handleProductClick = async (product: IProduct) => {
     dispatch({ type: 'SELECT_PRODUCT', payload: product.id })
-    event('click_view_product', product.id)
+    event('click_view_product', product.id.toString())
     // Here we wait till we log the event because of the window.open() coming next
     await logEvent('click_view_product', { value: product.id })
     //window.open(product.url, '_self')

@@ -42,6 +42,7 @@
     "react-dev-utils": "^11.0.4",
     "react-dom": "^16.10.2",
     "react-facebook-login": "^4.1.1",
+    "react-responsive-carousel": "^3.2.23",
     "react-test-renderer": "^16.11.0",
     "svg-url-loader": "^7.1.1",
     "tailwindcss": "^2.2.15",

@@ -8,15 +8,15 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleRemoveClick }): J
   const { productSelected } = useContext(GlobalProviderState)
   //const state = JSON.parse(localStorage.getItem('state')!)
   //const productSelected = state.productSelected
-  console.log(productSelected!.imageUrls)
+  console.log(productSelected!.images)
 
   const carouselButtonIndexPrevious = (index: number): string => {
-    if (index === 0) return (productSelected!.imageUrls.length - 1).toString()
+    if (index === 0) return (productSelected!.images.length - 1).toString()
     return (index - 1).toString()
   }
   
   const carouselButtonIndexNext = (index: number): string => {
-    if (index === (productSelected!.imageUrls.length - 1)) return '0'
+    if (index === (productSelected!.images.length - 1)) return '0'
     return (index + 1).toString()
   }
 
@@ -28,7 +28,7 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleRemoveClick }): J
         
         
         {
-          productSelected!.imageUrls.map((image: string, index: number) => (
+          productSelected!.images.map((image: string, index: number) => (
             <div id={index.toString()} className="carousel-item flex flex-row flex-wrap  relative w-full">
               
                 <ProductCarouselCard
@@ -50,7 +50,7 @@ const ProductCarousel2: FC<IProps> = ({ selectedProduct, handleRemoveClick }): J
 
 type IProps = {
   selectedProduct: IProduct
-  handleRemoveClick: (arg: string) => void
+  handleRemoveClick: (arg: number) => void
 }
 
 export default ProductCarousel2

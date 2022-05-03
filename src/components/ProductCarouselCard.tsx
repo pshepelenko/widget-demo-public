@@ -26,7 +26,7 @@ const ProductCarouselCard: FC<IProps> = ({ product, image, handleRemoveClick }):
 type IProps = {
   product: IProduct
   image: string
-  handleRemoveClick: (arg: string) => void
+  handleRemoveClick: (arg: number) => void
 }
 
 export default ProductCarouselCard

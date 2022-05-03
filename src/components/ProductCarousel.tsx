@@ -8,7 +8,7 @@ const ProductCarousel: FC<IProps> = ({ selectedProduct, handleAlternativeClick }
   const { productSelected } = useContext(GlobalProviderState)
   //const state = JSON.parse(localStorage.getItem('state')!)
   //const productSelected = state.productSelected
-  console.log(productSelected!.imageUrls)
+  console.log(productSelected!.images)
 
   return (
     <div className="relative ">
@@ -28,7 +28,7 @@ const ProductCarousel: FC<IProps> = ({ selectedProduct, handleAlternativeClick }
           </div>
         }
       >
-        {productSelected!.imageUrls.map((image: string) => (
+        {productSelected!.images.map((image: string) => (
           <div key={image} className="flex flex-row flex-wrap">
             
               <ProductCarouselCard
@@ -46,7 +46,7 @@ const ProductCarousel: FC<IProps> = ({ selectedProduct, handleAlternativeClick }
 
 type IProps = {
   selectedProduct: IProduct
-  handleAlternativeClick: (arg: string) => void
+  handleAlternativeClick: (arg: number) => void
 }
 
 export default ProductCarousel
