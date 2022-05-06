@@ -534,5 +534,16 @@ It also comes with a Discovery Module Loader which is a script that load the ind
     </div>
     
     <%= require('html-loader!./discoveryModuleLoader.html').default %>
+    <script>
+      let icon = document.querySelector('#splasup-shortlist-remove-icon')
+      const openDiscoveryModule = (e) => {
+          
+          const productId = e.target.getAttribute('product-id')
+          console.log('productId = ' + productId)
+
+          //setProductId(productId)
+      }
+      document.addEventListener('shortlist-item-removed', openDiscoveryModule, true)
+    </script>
   </body>
 </html>

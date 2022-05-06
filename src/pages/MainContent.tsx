@@ -30,6 +30,8 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
 
   const handleRemoveItemClick = (productId: number) => {
     dispatch({ type: 'REMOVE_ITEM', payload: productId })
+    let icon = document.querySelector('#splasup-shortlist-remove-icon')
+    icon!.dispatchEvent(new Event('shortlist-item-removed',{bubbles:false}));
     console.log(productId);
     event('click_tag', productId.toString())
     logEvent('click_tag', { value: productId })
