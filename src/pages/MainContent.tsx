@@ -44,46 +44,23 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
   const handleNotificationClick = (notificationType: string, productId: number) => {
     const currentNotifications = notifications.find(item => item.productId === productSelected?.id) || {productId: productSelected?.id, active: []}
     let newNotifications = notifications
-    console.log(currentNotifications)
-    console.log(notificationType)
-    console.log(productSelected?.id)
-    console.log(newNotifications)
-    console.log(currentNotifications.active.includes(notificationType))
     if (currentNotifications.active.includes(notificationType)){
-      console.log('there is a subscription')
       newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
-      console.log(newNotifications)
       currentNotifications.active = currentNotifications.active.filter((option: string) => option !== notificationType) 
       newNotifications = [...newNotifications, currentNotifications]   
       dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
     }
     else{
-      console.log('there is no subscription')
       newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
-      console.log(newNotifications)
       currentNotifications.active.push(notificationType) 
-      
-      console.log(currentNotifications)
       newNotifications = [...newNotifications, currentNotifications]   
       dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
     }
     console.log(newNotifications)
     
-    /*
     let optionClicked = {type: notificationType, productId: productId}
-    dispatch({ type: 'NOTIFICATION_IS_SET', payload: optionClicked })
     event('click_tag', productId.toString())
     logEvent('click_tag', { value: optionClicked })
-    
-    /*switch (type) {
-      case ('onSale') : {
-        dispatch({ type: 'NOTIFICATION_IS_SET', payload: optionClicked })
-        event('click_tag', productId.toString())
-        logEvent('click_tag', { value: optionClicked })
-        return 1        
-      }
-        
-    }*/
     
   }
   
