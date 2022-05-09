@@ -40,12 +40,6 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
     
     case 'SELECT_PRODUCT': {
       const productSelected = state.products!.find(product => product.id === action.payload)
-      //const productAlreadyInHistory = state.history.find(product => product.id === action.payload)
-
-      //if (productAlreadyInHistory) return { ...state, productSelected: productSelected }
-
-      //const newHistory = productSelected ? [...state.history, productSelected] : [...state.history]
-      
       return { ...state, productSelected: productSelected, activeSlide: 0 }
     }
 
@@ -53,7 +47,10 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
       const newProducts=state.products!.filter((item)=>item.id !== action.payload)
       return { ...state, products: newProducts, productSelected: newProducts[0]}
     }
-
+    case 'NOTIFICATION_IS_SET': {
+      return { ...state, notifications: action.payload}
+    }
+    
     case 'SELECT_FILTER_OPTION': {
       const currentActiveFilters = state.activeFilters
       const optionSelected = action.payload
@@ -121,6 +118,7 @@ export interface IAction {
     | 'REMOVE_ITEM'
     | 'SET_SELECTED_PRODUCT'
     | 'SLIDE_CHANGED'
+    | 'NOTIFICATION_IS_SET'
   payload?: any
 }
 

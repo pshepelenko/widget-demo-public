@@ -13,7 +13,7 @@ const SetInitialState = () : any => {
       isLoading: false,
       activeFilters: {},
       executionFlag: 0,
-      activeSlide: 0
+      activeSlide: 0      
     }
     
     return state
@@ -22,6 +22,8 @@ const SetInitialState = () : any => {
   return  {
     products: [],
     productSelected: null,
+    notifications: [{productId: 111, active: ['onSale']}],
+    email: '',
     error: null,
     isLoading: false,
     activeFilters: {},
@@ -77,6 +79,8 @@ export interface IProduct {
 export interface IGlobalProvider {
   products: IProduct[] | null
   productSelected: IProduct | null
+  notifications: any[],
+  email: string,
   error: string | null
   isLoading: boolean
   activeFilters: any,
