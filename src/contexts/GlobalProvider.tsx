@@ -7,13 +7,15 @@ const initialTags = ['Cheaper', 'Excellent condition', 'Exciting styles']
 const SetInitialState = () : any => {
   if (localStorage.getItem('state')) {
     let state = JSON.parse(localStorage.getItem('state')!);
+    let notifications = state.notifications || []
     state = {
       ...state, 
       error: null,
       isLoading: false,
       activeFilters: {},
       executionFlag: 0,
-      activeSlide: 0      
+      activeSlide: 0,
+      notifications: notifications      
     }
     
     return state
@@ -22,7 +24,7 @@ const SetInitialState = () : any => {
   return  {
     products: [],
     productSelected: null,
-    notifications: [{productId: 111, active: ['onSale']}],
+    notifications: [],
     email: '',
     error: null,
     isLoading: false,
