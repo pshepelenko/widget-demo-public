@@ -51,6 +51,10 @@ const useTodoReducer = (state: IGlobalProvider, action: IAction) => {
       return { ...state, notifications: action.payload}
     }
     
+    case 'SIZE_SELECTED': {
+      return { ...state, sizeSelected: action.payload}
+    }
+
     case 'SELECT_FILTER_OPTION': {
       const currentActiveFilters = state.activeFilters
       const optionSelected = action.payload
@@ -119,6 +123,7 @@ export interface IAction {
     | 'SET_SELECTED_PRODUCT'
     | 'SLIDE_CHANGED'
     | 'NOTIFICATION_IS_SET'
+    | 'SIZE_SELECTED'
   payload?: any
 }
 

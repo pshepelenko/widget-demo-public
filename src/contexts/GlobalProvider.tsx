@@ -30,7 +30,8 @@ const SetInitialState = () : any => {
     isLoading: false,
     activeFilters: {},
     executionFlag: 0,
-    activeSlide: 0
+    activeSlide: 0,
+    sizeSelected: ''
   }
   
 
@@ -87,5 +88,6 @@ export interface IGlobalProvider {
   isLoading: boolean
   activeFilters: any,
   executionFlag: number,
-  activeSlide: number
+  activeSlide: number,
+  sizeSelected: string
 }
