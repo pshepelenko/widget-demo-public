@@ -31,7 +31,8 @@ const SetInitialState = () : any => {
     activeFilters: {},
     executionFlag: 0,
     activeSlide: 0,
-    sizeSelected: ''
+    sizeSelected: '',
+    userEmail: ''
   }
   
 
@@ -89,5 +90,6 @@ export interface IGlobalProvider {
   activeFilters: any,
   executionFlag: number,
   activeSlide: number,
-  sizeSelected: string
+  sizeSelected: string,
+  userEmail: string
 }

@@ -32,13 +32,13 @@ const EmptyWidget: FC<IProps> = props => {
        
       <div className="flex flex-col items-center justify-center  mb-3 text-center">
         <p>Your shortlist is empty</p>
-        <p className="flex mt-5" >
+        <div className="flex mt-5" >
           <div className="mr-2">You can add items to it by clicking</div> 
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 0C5.40008 0 0 5.40008 0 12C0 18.5999 5.40008 24 12 24C18.5999 24 24 18.5999 24 12C24 5.40008 18.5999 0 12 0ZM12 21.6003C6.71975 21.6003 2.39969 17.2802 2.39969 12C2.39969 6.71975 6.71975 2.39969 12 2.39969C17.2802 2.39969 21.6003 6.71975 21.6003 12C21.6003 17.2802 17.2802 21.6003 12 21.6003Z" fill="black"/>
             <path d="M17.9984 10.8002H13.1984L13.1982 6.00004C13.1982 4.44009 10.7981 4.44009 10.7981 6.00004V10.8L5.99809 10.8002C4.43814 10.8002 4.43814 13.2003 5.99809 13.2003H10.7981V18.0003C10.7981 19.5603 13.1982 19.5603 13.1982 18.0003V13.2003H17.9982C19.5584 13.2001 19.5584 10.8002 17.9984 10.8002V10.8002Z" fill="black"/>
           </svg>
-        </p>
+        </div>
       </div>
                 
       

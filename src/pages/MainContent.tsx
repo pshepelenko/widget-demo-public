@@ -9,15 +9,16 @@ import { GlobalProviderDispatch, GlobalProviderState, IProduct } from '../contex
 import ProductCarousel3 from '../components/ProductCarousel3'
 import NotificationsColumn from '../components/NotificationColumn'
 import ProductInfo from '../components/ProductInfo'
+import EmailCollection from '../components/EmailCollection'
 
 
 
-const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
+const MainContent: FC<IProps> = ({ popUpClosed, products, saveEmail, setPopUpClose, handleNotificationClick }) : JSX.Element => {
   
   const dispatch = useContext(GlobalProviderDispatch)
-  const { notifications, productSelected } = useContext(GlobalProviderState)
+  const { notifications, productSelected, userEmail } = useContext(GlobalProviderState)
   const [changedFocus, setFocus] = useState(false)
-
+  
 
   let newProductSelected = productSelected;
   if (products!== [] && productSelected === null) {
@@ -42,32 +43,18 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
     logEvent('click_tag', { value: optionClicked })
     
   }
-  const handleNotificationClick = (notificationType: string, productId: number) => {
-    const currentNotifications = notifications.find(item => item.productId === productSelected?.id) || {productId: productSelected?.id, active: []}
-    let newNotifications = notifications
-    if (currentNotifications.active.includes(notificationType)){
-      newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
-      currentNotifications.active = currentNotifications.active.filter((option: string) => option !== notificationType) 
-      newNotifications = [...newNotifications, currentNotifications]   
-      dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
-    }
-    else{
-      newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
-      currentNotifications.active.push(notificationType) 
-      newNotifications = [...newNotifications, currentNotifications]   
-      dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
-    }
-    console.log(newNotifications)
-    
-    let optionClicked = {type: notificationType, productId: productId}
-    event('click_tag', productId.toString())
-    logEvent('click_tag', { value: optionClicked })
-    
-  }
+  
+  
   
  
   return (
     <div className="flex px-4 flex flex-col">
+      {//Notifications popup
+      
+        !popUpClosed &&
+        <EmailCollection saveEmail={saveEmail} closePopup={setPopUpClose}/>
+      
+      }
       {//<NotificationsColumn />
       }
       <div>Get notified</div>
@@ -108,7 +95,11 @@ const MainContent: FC<IProps> = ({ products }) : JSX.Element => {
 }
 
 interface IProps {
+  popUpClosed: boolean
   products: IProduct[]
+  saveEmail: (email: string) => void 
+  setPopUpClose: (state: boolean) => void
+  handleNotificationClick: (notificationType: string, productId: number) => void
 }
 
 export default MainContent

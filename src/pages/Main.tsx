@@ -23,7 +23,7 @@ import Button from '../components/Button'
 
 const AlternativeDiscovery: FC<IProps> = props => {
   // Context
-  const { productSelected, products } = useContext(GlobalProviderState)
+  const { productSelected, products, userEmail, notifications} = useContext(GlobalProviderState)
   const dispatch = useContext(GlobalProviderDispatch)
   console.log('productSelected')
   console.log(productSelected)
@@ -31,7 +31,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
   localStorage.setItem('state', JSON.stringify(state))
   // Props
   const {shortlisteditems, userId, closeModule } = props
-  
+  const [popUpClosed, setPopUpClosed] = useState(true)
   
   
   // Fetch
@@ -66,9 +66,46 @@ const AlternativeDiscovery: FC<IProps> = props => {
     //window.open(product.url, '_self')
   }
 
+  const saveEmail = (email: string) => {
+    dispatch({ type: 'SET_USER_EMAIL', payload: email })
+    console.log(email);
+    setPopUpClosed(true)
+    event('click_tag', email)
+    logEvent('click_tag', { value: email })
+    
+  }
+
+  const handleNotificationClick = (notificationType: string, productId: number) => {
+    if (userEmail === '' || !userEmail)
+    {
+      setPopUpClosed(false)
+    } else {
+      const currentNotifications = notifications.find(item => item.productId === productSelected?.id) || {productId: productSelected?.id, active: []}
+      let newNotifications = notifications
+      if (currentNotifications.active.includes(notificationType)){
+        newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
+        currentNotifications.active = currentNotifications.active.filter((option: string) => option !== notificationType) 
+        newNotifications = [...newNotifications, currentNotifications]   
+        dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
+      }
+      else{
+        newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
+        currentNotifications.active.push(notificationType) 
+        newNotifications = [...newNotifications, currentNotifications]   
+        dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
+      }
+      
+      let optionClicked = {type: notificationType, productId: productId}
+      event('click_tag', productId.toString())
+      logEvent('click_tag', { value: optionClicked })
+    }
+  }
+
+
   const [isMobile, setIsMobile] = useState(window.matchMedia("(min-width: 768px)").matches);
   const [seeMore, setSeeMore] = useState(false)
   const [exportPage, setExportpage] = useState(false)
+  
 
   useEffect(() => { 
     const handler = (e: { matches: React.SetStateAction<boolean> }) => setIsMobile(e.matches);
@@ -117,7 +154,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   
                 </div>
 
-                <MainContent products={products!}/>
+                <MainContent handleNotificationClick={handleNotificationClick} popUpClosed={popUpClosed} setPopUpClose={setPopUpClosed} saveEmail={saveEmail} products={products!}/>
 
                 <div className="w-full flex justify-center items-center mt-4 mb-4">
                   <button className="p-2 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-white bg-secondary border-secondary  hover:border-opacity-100"> 
