@@ -9,11 +9,9 @@ import { GlobalProviderDispatch, GlobalProviderState, IProduct } from '../contex
 import ProductCarousel3 from '../components/ProductCarousel3'
 import NotificationsColumn from '../components/NotificationColumn'
 import ProductInfo from '../components/ProductInfo'
-import EmailCollection from '../components/EmailCollection'
 
 
-
-const MainContent: FC<IProps> = ({ popUpClosed, products, saveEmail, setPopUpClose, handleNotificationClick }) : JSX.Element => {
+const MainContent: FC<IProps> = ({ SizeWarningFlag, products,  handleNotificationClick }) : JSX.Element => {
   
   const dispatch = useContext(GlobalProviderDispatch)
   const { notifications, productSelected, userEmail } = useContext(GlobalProviderState)
@@ -49,12 +47,7 @@ const MainContent: FC<IProps> = ({ popUpClosed, products, saveEmail, setPopUpClo
  
   return (
     <div className="flex px-4 flex flex-col">
-      {//Notifications popup
-      
-        !popUpClosed &&
-        <EmailCollection saveEmail={saveEmail} closePopup={setPopUpClose}/>
-      
-      }
+
       {//<NotificationsColumn />
       }
       <div>Get notified</div>
@@ -67,7 +60,10 @@ const MainContent: FC<IProps> = ({ popUpClosed, products, saveEmail, setPopUpClo
           <ProductCarousel3 selectedProduct={productSelected!}  handleRemoveClick={handleRemoveItemClick} changedFocus={changedFocus} />
           
           <ProductInfo />
-              
+          {
+            SizeWarningFlag &&
+            <div className="text-red-400 font-semibold"> Please select the size you want </div>
+          }    
          
         </div>
         {//<ProductList />
@@ -95,10 +91,8 @@ const MainContent: FC<IProps> = ({ popUpClosed, products, saveEmail, setPopUpClo
 }
 
 interface IProps {
-  popUpClosed: boolean
-  products: IProduct[]
-  saveEmail: (email: string) => void 
-  setPopUpClose: (state: boolean) => void
+  SizeWarningFlag: boolean
+    products: IProduct[]
   handleNotificationClick: (notificationType: string, productId: number) => void
 }
 

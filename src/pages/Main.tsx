@@ -17,13 +17,15 @@ import MainBottom from './MainBottom'
 import ExportPage from './ExportPage'
 import EmptyWidget from './EmptyWidget'
 import Button from '../components/Button'
+import EmailCollection from '../components/EmailCollection'
+import ReminderSettings from '../components/ReminderSettings'
 
 //const splashupEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
 //Sconst apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
 
 const AlternativeDiscovery: FC<IProps> = props => {
   // Context
-  const { productSelected, products, userEmail, notifications} = useContext(GlobalProviderState)
+  const { productSelected, products, userEmail, notifications, sizeSelected} = useContext(GlobalProviderState)
   const dispatch = useContext(GlobalProviderDispatch)
   console.log('productSelected')
   console.log(productSelected)
@@ -32,6 +34,8 @@ const AlternativeDiscovery: FC<IProps> = props => {
   // Props
   const {shortlisteditems, userId, closeModule } = props
   const [popUpClosed, setPopUpClosed] = useState(true)
+  const [popUpType, setPopUpType] = useState('e-mail')
+  const [SizeWarning, showSizeWarning] = useState(false)
   
   
   // Fetch
@@ -41,22 +45,6 @@ const AlternativeDiscovery: FC<IProps> = props => {
     }`
   )*/
 
-  
-
-
-  const handleFilterOptionClick = (optionClicked: any) => {
-    dispatch({ type: 'SELECT_FILTER_OPTION', payload: optionClicked })
-    console.log(optionClicked);
-    event('click_tag', optionClicked)
-    logEvent('click_tag', { value: optionClicked })
-  }
-
- 
-  const handleAlternativeClick = (id: string) => {
-    dispatch({ type: 'SELECT_PRODUCT', payload: id })
-    event('click_alternative', id)
-    logEvent('click_alternative', { value: id })
-  }
 
   const handleProductClick = async (product: IProduct) => {
     dispatch({ type: 'SELECT_PRODUCT', payload: product.id })
@@ -78,27 +66,57 @@ const AlternativeDiscovery: FC<IProps> = props => {
   const handleNotificationClick = (notificationType: string, productId: number) => {
     if (userEmail === '' || !userEmail)
     {
+      setPopUpType('e-mail')
       setPopUpClosed(false)
-    } else {
-      const currentNotifications = notifications.find(item => item.productId === productSelected?.id) || {productId: productSelected?.id, active: []}
-      let newNotifications = notifications
-      if (currentNotifications.active.includes(notificationType)){
-        newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
-        currentNotifications.active = currentNotifications.active.filter((option: string) => option !== notificationType) 
-        newNotifications = [...newNotifications, currentNotifications]   
-        dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
-      }
-      else{
-        newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
-        currentNotifications.active.push(notificationType) 
-        newNotifications = [...newNotifications, currentNotifications]   
-        dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
-      }
-      
-      let optionClicked = {type: notificationType, productId: productId}
-      event('click_tag', productId.toString())
-      logEvent('click_tag', { value: optionClicked })
+      return
+    } 
+    
+    if (notificationType === 'sizeInStock' && !sizeSelected)
+    {
+      showSizeWarning(true)
+      return
     }
+    showSizeWarning(false)
+    const currentNotifications = notifications.find(item => item.productId === productSelected?.id) || {productId: productSelected?.id, active: []}
+    let newNotifications = notifications
+    if (currentNotifications.active.includes(notificationType)){
+      newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
+      currentNotifications.active = currentNotifications.active.filter((option: string) => option !== notificationType) 
+      newNotifications = [...newNotifications, currentNotifications]   
+      dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
+    }
+    else{
+      newNotifications = newNotifications.filter(item => item.productId !== productSelected?.id)
+      currentNotifications.active.push(notificationType) 
+      newNotifications = [...newNotifications, currentNotifications]   
+      dispatch({ type: 'NOTIFICATION_IS_SET', payload: newNotifications })
+    }
+      
+    let optionClicked = {type: notificationType, productId: productId}
+    event('click_tag', productId.toString())
+    logEvent('click_tag', { value: optionClicked })
+    
+  }
+
+  const handleRemiderClick = () => {
+    if (userEmail === '' || !userEmail)
+    {
+      setPopUpType('e-mail')
+      setPopUpClosed(false)
+      return
+    }
+    setPopUpType('reminder')
+    setPopUpClosed(false)
+    event('click_tag', userEmail)
+    logEvent('click_tag', { value: userEmail })
+    
+  }
+
+  const handleRemiderSubmit = (quantity: number, scale: string) => {
+    setPopUpClosed(true)
+    event('click_tag', scale)
+    logEvent('click_tag', { value: scale })
+    
   }
 
 
@@ -127,9 +145,17 @@ const AlternativeDiscovery: FC<IProps> = props => {
               <EmptyWidget />       
               : !exportPage && 
               <div className=""  >
+                {//Notifications popup
+                  !popUpClosed &&
+                  popUpType === 'e-mail' && 
+                    <EmailCollection saveEmail={saveEmail} closePopup={setPopUpClosed}/>
+                }
+                {
+                  !popUpClosed &&
+                  popUpType === 'reminder' && 
+                    <ReminderSettings saveSettings={handleRemiderSubmit} closePopup={setPopUpClosed}/>
+                }
                 
-                
-
                 <div className="w-full flex justify-center items-center mt-4 mb-4">
                   <button className="w-10/12 p-2 bg-secondary text-white flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"> 
                     <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -145,7 +171,10 @@ const AlternativeDiscovery: FC<IProps> = props => {
                 </div>
                 
                 <div className="w-full flex justify-center items-center mt-4 mb-4">
-                  <button className="w-10/12 p-2  flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"> 
+                  <button 
+                    className="w-10/12 p-2  flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"
+                    onClick={() => {handleRemiderClick()}}
+                  > 
                     <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M8.99895 0.5C8.00208 0.5 7.18065 1.32143 7.18065 2.31829V3.16105C4.04277 3.96787 1.72609 6.80624 1.72609 10.1968V15.6513H0.210938V16.8634H17.7867V15.6513H16.2716V10.1968C16.2716 6.80608 13.9549 3.96732 10.817 3.16105V2.31829C10.817 1.32143 9.9956 0.5 8.99873 0.5H8.99895ZM8.99895 1.71202C9.34518 1.71202 9.60496 1.9718 9.60496 2.31802V2.9526C9.40626 2.93633 9.20186 2.92428 8.99895 2.92428C8.79604 2.92428 8.59162 2.93633 8.39294 2.9526V2.31802C8.39294 1.97179 8.65272 1.71202 8.99895 1.71202V1.71202ZM8.99895 4.13632C12.367 4.13632 15.0596 6.82886 15.0596 10.1969V15.6515H2.93833V10.1969C2.93833 6.82886 5.63086 4.13632 8.99895 4.13632ZM6.87778 17.4697V18.3788C6.87778 19.5435 7.83428 20.5 8.99895 20.5C10.1636 20.5 11.1201 19.5435 11.1201 18.3788V17.4697H9.90809V18.3788C9.90809 18.8929 9.51303 19.288 8.99895 19.288C8.48487 19.288 8.0898 18.8929 8.0898 18.3788V17.4697H6.87778Z" fill="black"/>
                     </svg>
@@ -154,7 +183,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   
                 </div>
 
-                <MainContent handleNotificationClick={handleNotificationClick} popUpClosed={popUpClosed} setPopUpClose={setPopUpClosed} saveEmail={saveEmail} products={products!}/>
+                <MainContent SizeWarningFlag={SizeWarning} handleNotificationClick={handleNotificationClick} products={products!}/>
 
                 <div className="w-full flex justify-center items-center mt-4 mb-4">
                   <button className="p-2 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-white bg-secondary border-secondary  hover:border-opacity-100"> 
