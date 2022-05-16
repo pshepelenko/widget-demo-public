@@ -43,7 +43,7 @@ const ReminderSettings: FC<IProps> = ({ type = 'e-mail', closePopup, saveSetting
             <option value="3">3</option>
             <option value="4">4</option>
           </select>
-          <div>
+          <div className='flex flex-row'>
             <label className='mr-4'>
               <input className="mt-3 mr-1" style={{accentColor: "black"}} name="period" type="radio" onChange={() => setScale('day')}/>
               Day
