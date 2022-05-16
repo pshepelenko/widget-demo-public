@@ -19,6 +19,7 @@ import EmptyWidget from './EmptyWidget'
 import Button from '../components/Button'
 import EmailCollection from '../components/EmailCollection'
 import ReminderSettings from '../components/ReminderSettings'
+import ExportSuccess from '../components/ExportSuccess'
 
 //const splashupEndPointUrl = 'https://api.splashup.co/discover/v3/alternatives'
 //Sconst apiKey = '31805389-c240-4d42-8ff9-2cc30f753212'
@@ -27,8 +28,6 @@ const AlternativeDiscovery: FC<IProps> = props => {
   // Context
   const { productSelected, products, userEmail, notifications, sizeSelected} = useContext(GlobalProviderState)
   const dispatch = useContext(GlobalProviderDispatch)
-  console.log('productSelected')
-  console.log(productSelected)
   const state = useContext(GlobalProviderState)
   localStorage.setItem('state', JSON.stringify(state))
   // Props
@@ -119,6 +118,20 @@ const AlternativeDiscovery: FC<IProps> = props => {
     
   }
 
+  const handleExportClick = () => {
+    console.log('export clicked')
+    if (userEmail === '' || !userEmail)
+    {
+      setPopUpType('e-mail')
+      setPopUpClosed(false)
+      return
+    } 
+    setPopUpType('export')
+    setPopUpClosed(false)
+    event('click_tag', userEmail)
+    logEvent('click_tag', { value: userEmail })
+    
+  }
 
   const [isMobile, setIsMobile] = useState(window.matchMedia("(min-width: 768px)").matches);
   const [seeMore, setSeeMore] = useState(false)
@@ -155,6 +168,11 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   popUpType === 'reminder' && 
                     <ReminderSettings saveSettings={handleRemiderSubmit} closePopup={setPopUpClosed}/>
                 }
+                {
+                  !popUpClosed &&
+                  popUpType === 'export' && 
+                    <ExportSuccess  closePopup={setPopUpClosed}/>
+                }
                 
                 <div className="w-full flex justify-center items-center mt-4 mb-4">
                   <button className="w-10/12 p-2 bg-secondary text-white flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"> 
@@ -163,7 +181,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
                     </svg>
                     <div 
                       className="ml-2 font-bold"
-                      onClick={() => {setExportpage(true)}}
+                      onClick={() => {handleExportClick()}}
                     > 
                       EXPORT SESSION SHORTLIST 
                     </div>

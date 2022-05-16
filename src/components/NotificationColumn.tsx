@@ -7,8 +7,7 @@ const NotificationsColumn: FC<IProps> = ({handleNotificationClick}): JSX.Element
   const { notifications, productSelected } = useContext(GlobalProviderState)
   
     const currentNotifications = notifications.find(item => item.productId === productSelected?.id) || {productId: productSelected?.id, active: []}
-    console.log('rendering')
-    console.log(currentNotifications)
+   
   return (
     <div>
         <div className="flex flex-col mr-2">
