@@ -9,7 +9,7 @@ const ExportSuccess: FC<IProps> = ({ type = 'e-mail', closePopup}): JSX.Element 
 
   return (
     <div className='flex items-center justify-center'>
-      <div onClick={() => {closePopup(true)}} className="fixed top-0 left-0 bg-gray-500/50 w-full h-full z-[102] flex items-center justify-center" />
+      <div onClick={() => {closePopup(true)}} className="absolute top-0 left-0 bg-gray-500/50 w-full h-full z-[102] flex items-center justify-center" />
       <div className="fixed top-1/4 bg-gray-100 w-80 h-80 z-[102] px-10 py-10 flex flex-col items-center justify-around" >
   
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

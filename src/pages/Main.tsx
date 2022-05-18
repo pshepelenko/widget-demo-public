@@ -149,7 +149,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
   return (
     <section id="splashup-discovery-module">
       <div className='absolute left-0 top-0 h-full w-full z-[100]' onClick={()=>closeModule()} />
-      <div className="fixed top-12 min-h-min md:top-10 left-0 md:left-20 z-[101] flex font-sans overflow-y-auto overscroll-contain no-scrollbar" style={{ height: isMobile ? '90%' : '90%'}}>
+      <div className="fixed top-12 min-h-min md:bottom-0 left-0 z-[101] flex font-sans overflow-y-auto overscroll-contain no-scrollbar" style={{ height: isMobile ? '90%' : '90%'}}>
         <div className="bg-gray-100"    >
           <div className="flex flex-col bg-gray-100 " style={{width: '390px'}}>
             <MainHeader
@@ -211,35 +211,9 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   </button>
                 </div>
 
-                <button 
-                  className="w-full flex flex-col grid place-items-center mt-4 mb-4"
-                  onClick={() => setSeeMore(!seeMore)}
-                >
-                  {
-                    !seeMore && 
-                    <div className='flex flex-col justify-center items-center'> 
-                      More description
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.39363 11.964L13.8952 4.92031C13.9097 4.90191 13.9187 4.87979 13.9212 4.8565C13.9237 4.8332 13.9195 4.80968 13.9092 4.78863C13.899 4.76758 13.883 4.74986 13.8631 4.7375C13.8432 4.72514 13.8202 4.71864 13.7968 4.71875L12.5889 4.71875C12.5124 4.71875 12.4389 4.75469 12.3921 4.81406L7.99988 10.439L3.60769 4.81406C3.56082 4.75313 3.48738 4.71875 3.41082 4.71875L2.203 4.71875C2.09832 4.71875 2.0405 4.83906 2.10457 4.92031L7.60613 11.964C7.65283 12.0239 7.71256 12.0723 7.78079 12.1057C7.84902 12.139 7.92395 12.1563 7.99988 12.1563C8.0758 12.1563 8.15073 12.139 8.21896 12.1057C8.28719 12.0723 8.34693 12.0239 8.39363 11.964Z" fill="#262626"/>
-                      </svg> 
-                    </div>  
-                  }
-                  {
-                    seeMore && 
-                    <div className='flex flex-col justify-center items-center'> 
-                      See less
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.60637 4.03595L2.10481 11.0797C2.09032 11.0981 2.08131 11.1202 2.07883 11.1435C2.07634 11.1668 2.08048 11.1903 2.09076 11.2114C2.10104 11.2324 2.11704 11.2501 2.13694 11.2625C2.15684 11.2749 2.17982 11.2814 2.20325 11.2812L3.41106 11.2812C3.48762 11.2812 3.56106 11.2453 3.60793 11.1859L8.00012 5.56095L12.3923 11.1859C12.4392 11.2469 12.5126 11.2812 12.5892 11.2812L13.797 11.2812C13.9017 11.2812 13.9595 11.1609 13.8954 11.0797L8.39387 4.03595C8.34717 3.97609 8.28744 3.92766 8.21921 3.89435C8.15098 3.86104 8.07605 3.84372 8.00012 3.84372C7.92419 3.84372 7.84927 3.86104 7.78104 3.89435C7.71281 3.92766 7.65307 3.97609 7.60637 4.03595Z" fill="#262626"/>
-                      </svg>
-                    </div>  
-                  }
-                  
+                <MainBottom />
 
-                </button>
-                {
-                  seeMore && <MainBottom />
-                  
-                }
+             
               </div>
             }
             {

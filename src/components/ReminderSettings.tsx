@@ -9,7 +9,7 @@ const ReminderSettings: FC<IProps> = ({ type = 'e-mail', closePopup, saveSetting
 
   return (
     <div className='flex items-center justify-center'>
-      <div onClick={() => {closePopup(true)}} className="fixed top-0 left-0 bg-gray-500/50 w-full h-full z-[102] flex items-center justify-center" />
+      <div onClick={() => {closePopup(true)}} className="absolute top-0 left-0 bg-gray-500/50 w-full h-full z-[102] flex items-center justify-center" />
       <div className="fixed top-1/4 bg-gray-100 w-80 z-[102] px-10 py-10" >
         <div className='flex flex-row bg-secondary text-white h-10 w-full absolute top-0 left-0 px-2 justify-between items-center'> 
           <div className='w-5'/>
