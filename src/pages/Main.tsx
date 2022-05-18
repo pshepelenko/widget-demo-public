@@ -190,7 +190,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   </button>
                 </div>
                 
-                <div className="w-full flex justify-center items-center mt-4 mb-4">
+                <div className="w-full flex justify-center items-center mt-4 mb-2">
                   <button 
                     className="w-10/12 p-2  flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"
                     onClick={() => {handleRemiderClick()}}
@@ -205,7 +205,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
 
                 <MainContent SizeWarningFlag={SizeWarning} handleNotificationClick={handleNotificationClick} products={products!}/>
 
-                <div className="w-full flex justify-center items-center mt-4 mb-4">
+                <div className="w-full flex justify-center items-center mt-2 mb-4">
                   <button className="p-2 w-40 flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-white bg-secondary border-secondary  hover:border-opacity-100"> 
                     ADD TO CART
                   </button>
