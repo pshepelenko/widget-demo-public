@@ -149,7 +149,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
   return (
     <section id="splashup-discovery-module">
       <div className='absolute left-0 top-0 h-full w-full z-[100]' onClick={()=>closeModule()} />
-      <div className="fixed top-12 min-h-min md:bottom-0 left-0 z-[101] flex font-sans overflow-y-auto overscroll-contain no-scrollbar" style={{ height: isMobile ? '90%' : '90%'}}>
+      <div className="fixed bottom-0 min-h-min md:bottom-0 left-0 z-[101] flex font-sans overflow-y-auto overscroll-contain no-scrollbar" style={{ height: isMobile ? '90%' : '90%'}}>
         <div className="bg-gray-100"    >
           <div className="flex flex-col bg-gray-100 " style={{width: '390px'}}>
             <MainHeader
