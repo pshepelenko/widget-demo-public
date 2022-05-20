@@ -46,7 +46,7 @@ const MainContent: FC<IProps> = ({ SizeWarningFlag, products,  handleNotificatio
   
  
   return (
-    <div className="flex px-4 flex flex-col">
+    <div className="flex px-5 flex flex-col">
 
       {//<NotificationsColumn />
       }

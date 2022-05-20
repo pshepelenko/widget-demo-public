@@ -5,7 +5,7 @@ const ProductCarouselCard: FC<IProps> = ({ product, image, handleRemoveClick }):
   return (
     <div className="w-full h-80">
       <div
-        className="w-full h-full border-2 rounded border-secondary flex justify-end"
+        className="w-full h-full  rounded  flex justify-end"
         style={{
           backgroundImage: `url(${image}`,
           backgroundRepeat: 'no-repeat',
