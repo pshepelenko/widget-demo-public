@@ -4,7 +4,7 @@ import React, { FC, HTMLAttributes } from 'react'
 const SizeButton: FC<IProps> = ({ children, size, inStock = true, selected = false, ...rest }): JSX.Element => {
   return (
     <button
-    className={`p-1 text-xs font-medium border shadow-sm focus:none mb-3 grid place-items-center ${
+    className={`p-1 text-sm font-normal border shadow-sm focus:none mb-3 flex justify-center items-center ${
       inStock
         ? selected
           ? 'h-10 w-10 border border-secondary bg-gray-300'
