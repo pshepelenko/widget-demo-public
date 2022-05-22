@@ -193,7 +193,7 @@ const AlternativeDiscovery: FC<IProps> = props => {
                   
                   <div className="w-full flex justify-center items-center mt-4 mb-2">
                     <button 
-                      className="w-10/12 p-2  flex justify-center items-center text-xs font-medium border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"
+                      className="w-10/12 p-2  flex justify-center items-center text-sm font-normal border rounded-full shadow-sm focus:none text-secondary border-secondary border-2 hover:border-opacity-100"
                       onClick={() => {handleRemiderClick()}}
                     > 
                       <svg className="mr-2" width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
