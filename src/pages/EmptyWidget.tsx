@@ -1,6 +1,9 @@
 import React, { ChangeEvent, FC, useContext } from 'react'
 
 // Components
+import ProductCarousel from '../components/ProductCarousel'
+//import { IProduct } from '../contexts/GlobalProvider'
+import Button from '../components/Button'
 import { logEvent } from '../utils/logEvent'
 import { event } from '../utils/googleAnalytics'
 

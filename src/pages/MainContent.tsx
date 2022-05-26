@@ -56,7 +56,7 @@ const MainContent: FC<IProps> = ({ SizeWarningFlag, products,  handleNotificatio
  
  
  
-        <div className="w-3/5 h-full mr-2">
+        <div className="w-3/5 h-full mr-2 max-w-[200px]">
           <ProductCarousel3 selectedProduct={productSelected!}  handleRemoveClick={handleRemoveItemClick} changedFocus={changedFocus} />
           
           <ProductInfo />
@@ -68,12 +68,12 @@ const MainContent: FC<IProps> = ({ SizeWarningFlag, products,  handleNotificatio
         </div>
         {//<ProductList />
         }
-        <div className="h-80 w-16 carousel carousel-vertical ">
+        <div className="h-80 w-1/4 carousel carousel-vertical ">
           {
             products.map((product: IProduct) => (
               <button 
                 key={product.id.toString()} 
-                className = "carousel-item h-1/4 mb-2"
+                className = "carousel-item mb-2"
                 onClick={() => {handleVerticalCarouselClick(product.id)}}
               >
                   <img id={product.id.toString()} className={product.id === newProductSelected!.id ? "border-secondary border" : "" } src={product.images[0]} />                    
